@@ -1,0 +1,905 @@
+{
+ "fixture": "two_column.pdf",
+ "conditions": [
+  {
+   "name": "baseline:pypdf.extract_text",
+   "seconds": 0.016,
+   "returncode": null,
+   "order": {
+    "tokens_found": 37,
+    "tokens_total": 42,
+    "missing": [
+     "FORM1"
+    ],
+    "order_inversions": 52,
+    "order_pairs": 496,
+    "order_inversion_rate": 0.1048,
+    "column_alternations": 17,
+    "splice_prone_joins": 3
+   },
+   "warnings": [],
+   "status": null,
+   "evidence": {
+    "page_ok": 0,
+    "bbox_ok": 0,
+    "text_ok": 0,
+    "total": 38,
+    "detail": [],
+    "note": "plain text has no block-level provenance"
+   },
+   "table": {
+    "found": false,
+    "note": "plain text cannot recover cell structure"
+   },
+   "formula": {
+    "found": false,
+    "note": "plain text keeps symbols but no script structure"
+   }
+  },
+  {
+   "name": "baseline:pymupdf.get_text(text)",
+   "seconds": 0.006,
+   "returncode": null,
+   "order": {
+    "tokens_found": 38,
+    "tokens_total": 42,
+    "missing": [],
+    "order_inversions": 52,
+    "order_pairs": 528,
+    "order_inversion_rate": 0.0985,
+    "column_alternations": 17,
+    "splice_prone_joins": 3
+   },
+   "warnings": [],
+   "status": null,
+   "evidence": {
+    "page_ok": 0,
+    "bbox_ok": 0,
+    "text_ok": 0,
+    "total": 38,
+    "detail": [],
+    "note": "plain text has no block-level provenance"
+   },
+   "table": {
+    "found": false,
+    "note": "plain text cannot recover cell structure"
+   },
+   "formula": {
+    "found": false,
+    "note": "plain text keeps symbols but no script structure"
+   }
+  },
+  {
+   "name": "skill:pdf_outline",
+   "seconds": 0.372,
+   "returncode": 0,
+   "order": {
+    "tokens_found": 38,
+    "tokens_total": 42,
+    "missing": [],
+    "order_inversions": 0,
+    "order_pairs": 528,
+    "order_inversion_rate": 0.0,
+    "column_alternations": 1,
+    "splice_prone_joins": 0
+   },
+   "warnings": [],
+   "status": "ok",
+   "evidence": {
+    "page_ok": 38,
+    "bbox_ok": 38,
+    "text_ok": 38,
+    "total": 38,
+    "detail": [
+     {
+      "token": "TITLE",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       60.4,
+       457.8,
+       75.4
+      ],
+      "true_bbox": [
+       56.0,
+       60.4,
+       457.8,
+       75.4
+      ]
+     },
+     {
+      "token": "AUTH",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       84.6,
+       292.6,
+       94.1
+      ],
+      "true_bbox": [
+       56.0,
+       84.6,
+       292.6,
+       94.1
+      ]
+     },
+     {
+      "token": "ABS1",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       105.4,
+       370.1,
+       124.90608978271484
+      ],
+      "true_bbox": [
+       56.0,
+       105.4,
+       370.1,
+       113.9
+      ]
+     },
+     {
+      "token": "ABS2",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       105.4,
+       370.1,
+       124.90608978271484
+      ],
+      "true_bbox": [
+       56.0,
+       116.4,
+       356.5,
+       124.9
+      ]
+     },
+     {
+      "token": "H1",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       141.5,
+       132.4,
+       152.5
+      ],
+      "true_bbox": [
+       56.0,
+       141.5,
+       132.4,
+       152.5
+      ]
+     },
+     {
+      "token": "L1a",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       158.6,
+       255.0,
+       202.63034057617188
+      ],
+      "true_bbox": [
+       56.0,
+       158.6,
+       255.0,
+       168.1
+      ]
+     },
+     {
+      "token": "L1b",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       158.6,
+       255.0,
+       202.63034057617188
+      ],
+      "true_bbox": [
+       56.0,
+       170.1,
+       241.8,
+       179.6
+      ]
+     },
+     {
+      "token": "L1c",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       158.6,
+       255.0,
+       202.63034057617188
+      ],
+      "true_bbox": [
+       56.0,
+       181.6,
+       235.0,
+       191.1
+      ]
+     },
+     {
+      "token": "L1d",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       158.6,
+       255.0,
+       202.63034057617188
+      ],
+      "true_bbox": [
+       56.0,
+       193.1,
+       215.5,
+       202.6
+      ]
+     },
+     {
+      "token": "L1e",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       204.6,
+       231.8,
+       214.1
+      ],
+      "true_bbox": [
+       56.0,
+       204.6,
+       231.8,
+       214.1
+      ]
+     },
+     {
+      "token": "R1a",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       305.0,
+       158.6,
+       501.9542236328125,
+       214.13034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       158.6,
+       488.8,
+       168.1
+      ]
+     },
+     {
+      "token": "R1b",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       305.0,
+       158.6,
+       501.9542236328125,
+       214.13034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       170.1,
+       478.7,
+       179.6
+      ]
+     },
+     {
+      "token": "R1c",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       305.0,
+       158.6,
+       501.9542236328125,
+       214.13034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       181.6,
+       488.2,
+       191.1
+      ]
+     },
+     {
+      "token": "R1d",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       305.0,
+       158.6,
+       501.9542236328125,
+       214.13034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       193.1,
+       502.0,
+       202.6
+      ]
+     },
+     {
+      "token": "R1e",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       305.0,
+       158.6,
+       501.9542236328125,
+       214.13034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       204.6,
+       498.8,
+       214.1
+      ]
+     },
+     {
+      "token": "FIGCAP",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       305.0,
+       261.8,
+       446.8,
+       269.8
+      ],
+      "true_bbox": [
+       305.0,
+       261.8,
+       446.8,
+       269.8
+      ]
+     },
+     {
+      "token": "H2",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       281.5,
+       107.3,
+       292.5
+      ],
+      "true_bbox": [
+       56.0,
+       281.5,
+       107.3,
+       292.5
+      ]
+     },
+     {
+      "token": "L2a",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       298.6,
+       243.97650146484375,
+       342.6303405761719
+      ],
+      "true_bbox": [
+       56.0,
+       298.6,
+       237.6,
+       308.1
+      ]
+     },
+     {
+      "token": "L2b",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       298.6,
+       243.97650146484375,
+       342.6303405761719
+      ],
+      "true_bbox": [
+       56.0,
+       310.1,
+       226.5,
+       319.6
+      ]
+     },
+     {
+      "token": "L2c",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       298.6,
+       243.97650146484375,
+       342.6303405761719
+      ],
+      "true_bbox": [
+       56.0,
+       321.6,
+       244.0,
+       331.1
+      ]
+     },
+     {
+      "token": "L2d",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       298.6,
+       243.97650146484375,
+       342.6303405761719
+      ],
+      "true_bbox": [
+       56.0,
+       333.1,
+       218.1,
+       342.6
+      ]
+     },
+     {
+      "token": "T1CAP",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       353.8,
+       205.0,
+       361.8
+      ],
+      "true_bbox": [
+       56.0,
+       353.8,
+       205.0,
+       361.8
+      ]
+     },
+     {
+      "token": "T1R1C0",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       104.0,
+       290.0,
+       396.0
+      ],
+      "true_bbox": null
+     },
+     {
+      "token": "T1R1C1",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       104.0,
+       290.0,
+       396.0
+      ],
+      "true_bbox": null
+     },
+     {
+      "token": "FN1",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       740.2,
+       314.6,
+       747.7
+      ],
+      "true_bbox": [
+       56.0,
+       740.2,
+       314.6,
+       747.7
+      ]
+     },
+     {
+      "token": "H3",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       223.1,
+       62.7,
+       371.9,
+       74.7
+      ],
+      "true_bbox": [
+       223.1,
+       62.7,
+       371.9,
+       74.7
+      ]
+     },
+     {
+      "token": "T1CONT",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       56.0,
+       90.2,
+       120.6,
+       97.7
+      ],
+      "true_bbox": [
+       56.0,
+       90.2,
+       120.6,
+       97.7
+      ]
+     },
+     {
+      "token": "T1RC0",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       104.0,
+       290.0,
+       396.0
+      ],
+      "true_bbox": null
+     },
+     {
+      "token": "T1RC1",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 1,
+      "bbox": [
+       56.0,
+       104.0,
+       290.0,
+       396.0
+      ],
+      "true_bbox": null
+     },
+     {
+      "token": "L3a",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       56.0,
+       142.6,
+       255.06300354003906,
+       186.63034057617188
+      ],
+      "true_bbox": [
+       56.0,
+       142.6,
+       229.7,
+       152.1
+      ]
+     },
+     {
+      "token": "L3b",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       56.0,
+       142.6,
+       255.06300354003906,
+       186.63034057617188
+      ],
+      "true_bbox": [
+       56.0,
+       154.1,
+       243.9,
+       163.6
+      ]
+     },
+     {
+      "token": "L3c",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       56.0,
+       142.6,
+       255.06300354003906,
+       186.63034057617188
+      ],
+      "true_bbox": [
+       56.0,
+       165.6,
+       232.3,
+       175.1
+      ]
+     },
+     {
+      "token": "L3d",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       56.0,
+       142.6,
+       255.06300354003906,
+       186.63034057617188
+      ],
+      "true_bbox": [
+       56.0,
+       177.1,
+       255.1,
+       186.6
+      ]
+     },
+     {
+      "token": "R3a",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       305.0,
+       142.6,
+       510.4,
+       186.63034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       142.6,
+       510.4,
+       152.1
+      ]
+     },
+     {
+      "token": "R3b",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       305.0,
+       142.6,
+       510.4,
+       186.63034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       154.1,
+       502.0,
+       163.6
+      ]
+     },
+     {
+      "token": "R3c",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       305.0,
+       142.6,
+       510.4,
+       186.63034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       165.6,
+       498.8,
+       175.1
+      ]
+     },
+     {
+      "token": "R3d",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       305.0,
+       142.6,
+       510.4,
+       186.63034057617188
+      ],
+      "true_bbox": [
+       305.0,
+       177.1,
+       488.7,
+       186.6
+      ]
+     },
+     {
+      "token": "FORM1",
+      "found": true,
+      "page_ok": true,
+      "bbox_ok": true,
+      "page": 2,
+      "bbox": [
+       305.0,
+       205.8,
+       363.9,
+       217.4
+      ],
+      "true_bbox": [
+       305.0,
+       206.6,
+       332.4,
+       216.1
+      ]
+     }
+    ]
+   },
+   "table": {
+    "found": true,
+    "number": "table-1",
+    "header_ok": true,
+    "header": [
+     "Layout",
+     "Spliced",
+     "Order acc."
+    ],
+    "rows": [
+     [
+      "Two-column (stream order)",
+      "5",
+      "0.61"
+     ],
+     [
+      "Two-column + skill",
+      "0",
+      "0.98"
+     ],
+     [
+      "Single column (control)",
+      "1",
+      "0.55"
+     ]
+    ],
+    "rows_correct": 3,
+    "rows_total": 3,
+    "spans_pages": [
+     1,
+     2
+    ],
+    "pages_ok": true,
+    "row_pages": [
+     1,
+     2,
+     2
+    ],
+    "cell_provenance": false
+   },
+   "formula": {
+    "found": true,
+    "text": "S = αx2 + βy−1",
+    "rich_text": "S = αx^{2} + βy_{−1}",
+    "number_ok": true,
+    "number": "2",
+    "superscripts_ok": true,
+    "superscripts": [
+     "2"
+    ],
+    "subscripts": [
+     "−1"
+    ],
+    "greek_ok": true,
+    "greek": [
+     "α",
+     "β"
+    ],
+    "page": 2,
+    "bbox": [
+     305.0,
+     205.8,
+     363.9,
+     217.4
+    ]
+   },
+   "layout": {
+    "columns": 2,
+    "columns_by_page": [
+     2,
+     2
+    ],
+    "gutters": [
+     [
+      290,
+      296
+     ]
+    ],
+    "body_font_size": 9.5,
+    "page_size": [
+     595.0,
+     842.0
+    ]
+   }
+  }
+ ],
+ "single_column": {
+  "columns": 1,
+  "expected_columns": 1,
+  "body_blocks": 4,
+  "lines_in_order": true,
+  "status": "ok",
+  "seconds": 0.353
+ },
+ "scanned": {
+  "status": "failed",
+  "uncertainty_kinds": [
+   "no_text_layer",
+   "ocr_unavailable",
+   "unreadable_page"
+  ],
+  "honest_no_text_layer": true,
+  "blocks": 0,
+  "seconds": 0.406,
+  "baseline_text_chars": 0,
+  "baseline_silently_empty": true
+ }
+}
