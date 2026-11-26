@@ -1,0 +1,488 @@
+{
+ "fixture": "two_column.pdf",
+ "pages": 2,
+ "generated_by": "tests/make_fixtures.py",
+ "licence": "synthetic text written for this project; no third-party content",
+ "reading_order": [
+  "TITLE",
+  "AUTH",
+  "ABS1",
+  "ABS2",
+  "H1",
+  "L1a",
+  "L1b",
+  "L1c",
+  "L1d",
+  "L1e",
+  "H2",
+  "L2a",
+  "L2b",
+  "L2c",
+  "L2d",
+  "T1CAP",
+  "T1R1C0",
+  "T1R1C1",
+  "R1a",
+  "R1b",
+  "R1c",
+  "R1d",
+  "R1e",
+  "FIGCAP",
+  "H3",
+  "T1CONT",
+  "T1RC0",
+  "T1RC1",
+  "L3a",
+  "L3b",
+  "L3c",
+  "L3d",
+  "R3a",
+  "R3b",
+  "R3c",
+  "R3d",
+  "FORM1"
+ ],
+ "reading_order_by_page": {
+  "page1_body": [
+   "TITLE",
+   "AUTH",
+   "ABS1",
+   "ABS2",
+   "H1",
+   "L1a",
+   "L1b",
+   "L1c",
+   "L1d",
+   "L1e",
+   "H2",
+   "L2a",
+   "L2b",
+   "L2c",
+   "L2d",
+   "T1CAP",
+   "T1R1C0",
+   "T1R1C1",
+   "R1a",
+   "R1b",
+   "R1c",
+   "R1d",
+   "R1e",
+   "FIGCAP"
+  ],
+  "page2_body": [
+   "H3",
+   "T1CONT",
+   "T1RC0",
+   "T1RC1",
+   "L3a",
+   "L3b",
+   "L3c",
+   "L3d",
+   "R3a",
+   "R3b",
+   "R3c",
+   "R3d",
+   "FORM1"
+  ]
+ },
+ "periphery": {
+  "page1": [
+   "HDR1",
+   "FN1",
+   "PG1"
+  ],
+  "page2": [
+   "HDR2",
+   "PG2"
+  ]
+ },
+ "elements": [
+  {
+   "token": "HDR1",
+   "kind": "header",
+   "page": 1,
+   "column": "full",
+   "text": "Journal of Layout Studies 3 (2026) 1-8"
+  },
+  {
+   "token": "TITLE",
+   "kind": "title",
+   "page": 1,
+   "column": "full",
+   "text": "Reading Order Recovery in Two-Column Scientific PDFs"
+  },
+  {
+   "token": "AUTH",
+   "kind": "authors",
+   "page": 1,
+   "column": "full",
+   "text": "A. Author, B. Author (Institute of Document Engineering)"
+  },
+  {
+   "token": "ABS1",
+   "kind": "abstract",
+   "page": 1,
+   "column": "full",
+   "text": "Abstract. We study how a layout-aware reader restores column order in two-column"
+  },
+  {
+   "token": "ABS2",
+   "kind": "abstract",
+   "page": 1,
+   "column": "full",
+   "text": "papers and keeps every sentence anchored to the page and block it came from."
+  },
+  {
+   "token": "H1",
+   "kind": "heading",
+   "page": 1,
+   "column": "left",
+   "text": "1  Introduction"
+  },
+  {
+   "token": "L1a",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "Two-column papers set text in narrow columns,"
+  },
+  {
+   "token": "L1b",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "so one paragraph is split across two frames."
+  },
+  {
+   "token": "L1c",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "A stream-order reader glues right onto left,"
+  },
+  {
+   "token": "L1d",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "and turns two sentences into one line."
+  },
+  {
+   "token": "L1e",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "The damage is silent: every word is there."
+  },
+  {
+   "token": "R1a",
+   "kind": "body",
+   "page": 1,
+   "column": "right",
+   "text": "Gutter detection alone is not enough: a title,"
+  },
+  {
+   "token": "R1b",
+   "kind": "body",
+   "page": 1,
+   "column": "right",
+   "text": "a caption or a wide table breaks the page"
+  },
+  {
+   "token": "R1c",
+   "kind": "body",
+   "page": 1,
+   "column": "right",
+   "text": "into bands that must be ordered separately."
+  },
+  {
+   "token": "R1d",
+   "kind": "body",
+   "page": 1,
+   "column": "right",
+   "text": "We segment first, then order inside each band."
+  },
+  {
+   "token": "R1e",
+   "kind": "body",
+   "page": 1,
+   "column": "right",
+   "text": "Every block keeps its page and bounding box."
+  },
+  {
+   "token": "FIGCAP",
+   "kind": "caption",
+   "page": 1,
+   "column": "right",
+   "text": "Figure 1: Bands split by a spanning title."
+  },
+  {
+   "token": "H2",
+   "kind": "heading",
+   "page": 1,
+   "column": "left",
+   "text": "2  Method"
+  },
+  {
+   "token": "L2a",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "We group characters into lines by baseline,"
+  },
+  {
+   "token": "L2b",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "then find vertical gutters from line spans."
+  },
+  {
+   "token": "L2c",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "Lines that cross a gutter become separators."
+  },
+  {
+   "token": "L2d",
+   "kind": "body",
+   "page": 1,
+   "column": "left",
+   "text": "The rest are sorted column by column."
+  },
+  {
+   "token": "T1CAP",
+   "kind": "caption",
+   "page": 1,
+   "column": "left",
+   "text": "Table 1: Spliced lines and order accuracy."
+  },
+  {
+   "token": "T1R1C0",
+   "kind": "table_header",
+   "page": 1,
+   "column": "left",
+   "text": "Layout | Spliced | Order acc.",
+   "cells": [
+    "Layout",
+    "Spliced",
+    "Order acc."
+   ],
+   "header": true
+  },
+  {
+   "token": "T1R1C1",
+   "kind": "table_row",
+   "page": 1,
+   "column": "left",
+   "text": "Two-column (stream order) | 5 | 0.61",
+   "cells": [
+    "Two-column (stream order)",
+    "5",
+    "0.61"
+   ]
+  },
+  {
+   "token": "FN1",
+   "kind": "footnote",
+   "page": 1,
+   "column": "left",
+   "text": "1 Funded by the Layout Foundation. Correspondence: a.author@example.org"
+  },
+  {
+   "token": "PG1",
+   "kind": "footer",
+   "page": 1,
+   "column": "full",
+   "text": "1"
+  },
+  {
+   "token": "HDR2",
+   "kind": "header",
+   "page": 2,
+   "column": "full",
+   "text": "Journal of Layout Studies 3 (2026) 1-8"
+  },
+  {
+   "token": "H3",
+   "kind": "heading",
+   "page": 2,
+   "column": "full",
+   "text": "3  Results and Discussion"
+  },
+  {
+   "token": "T1CONT",
+   "kind": "caption",
+   "page": 2,
+   "column": "left",
+   "text": "Table 1 (continued)"
+  },
+  {
+   "token": "T1RC0",
+   "kind": "table_row",
+   "page": 2,
+   "column": "left",
+   "text": "Two-column + skill | 0 | 0.98",
+   "cells": [
+    "Two-column + skill",
+    "0",
+    "0.98"
+   ]
+  },
+  {
+   "token": "T1RC1",
+   "kind": "table_row",
+   "page": 2,
+   "column": "left",
+   "text": "Single column (control) | 1 | 0.55",
+   "cells": [
+    "Single column (control)",
+    "1",
+    "0.55"
+   ]
+  },
+  {
+   "token": "L3a",
+   "kind": "body",
+   "page": 2,
+   "column": "left",
+   "text": "The stream reader splices five lines here,"
+  },
+  {
+   "token": "L3b",
+   "kind": "body",
+   "page": 2,
+   "column": "left",
+   "text": "which is the common word-processor failure."
+  },
+  {
+   "token": "L3c",
+   "kind": "body",
+   "page": 2,
+   "column": "left",
+   "text": "Band segmentation removes every splice."
+  },
+  {
+   "token": "L3d",
+   "kind": "body",
+   "page": 2,
+   "column": "left",
+   "text": "The remaining cost is one pass over the spans."
+  },
+  {
+   "token": "R3a",
+   "kind": "body",
+   "page": 2,
+   "column": "right",
+   "text": "Evidence is a page number plus a bounding box,"
+  },
+  {
+   "token": "R3b",
+   "kind": "body",
+   "page": 2,
+   "column": "right",
+   "text": "so a reviewer can check the sentence in place."
+  },
+  {
+   "token": "R3c",
+   "kind": "body",
+   "page": 2,
+   "column": "right",
+   "text": "Table rows keep the header of their first page."
+  },
+  {
+   "token": "R3d",
+   "kind": "body",
+   "page": 2,
+   "column": "right",
+   "text": "Formulas keep number and script structure."
+  },
+  {
+   "token": "FORM1",
+   "kind": "formula",
+   "page": 2,
+   "column": "right",
+   "text": "S = αx2 + βy−1"
+  },
+  {
+   "token": "PG2",
+   "kind": "footer",
+   "page": 2,
+   "column": "full",
+   "text": "2"
+  }
+ ],
+ "columns": {
+  "left_x": [
+   56.0,
+   290.0
+  ],
+  "right_x": [
+   305.0,
+   539.0
+  ],
+  "gutter": [
+   290.0,
+   305.0
+  ]
+ },
+ "tables": {
+  "table_1": {
+   "caption": "Table 1: Spliced lines and order accuracy.",
+   "header": [
+    "Layout",
+    "Spliced",
+    "Order acc."
+   ],
+   "rows": [
+    [
+     "Two-column (stream order)",
+     "5",
+     "0.61"
+    ],
+    [
+     "Two-column + skill",
+     "0",
+     "0.98"
+    ],
+    [
+     "Single column (control)",
+     "1",
+     "0.55"
+    ]
+   ],
+   "spans_pages": [
+    1,
+    2
+   ]
+  }
+ },
+ "formulas": {
+  "FORM1": {
+   "number": "(2)",
+   "superscripts": [
+    "2",
+    "−1"
+   ],
+   "greek": [
+    "α",
+    "β"
+   ]
+  }
+ },
+ "scanned_fixture": true,
+ "single_column": {
+  "fixture": "single_column.pdf",
+  "body_lines": 24,
+  "expected_columns": 1,
+  "expected_lines": [
+   "A single-column page is the control condition: the reader must not invent",
+   "columns where there are none. Every line starts at the left margin, the text",
+   "runs the full width of the type area, and paragraph breaks are marked by",
+   "vertical space rather than by a column change. A layout detector that keys",
+   "on whitespace alone can split such a page in the middle of a sentence, so",
+   "the control case matters as much as the two-column case does."
+  ]
+ }
+}
