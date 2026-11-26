@@ -1,0 +1,2620 @@
+{
+ "schema": "pdfoutline/result/v1",
+ "case_id": "example-001",
+ "status": "ok",
+ "generated_at": "2026-11-25T22:42:22+08:00",
+ "task": "Parse this two-column paper: give the reading order, every table with its header, and every formula with its number.",
+ "source": {
+  "pdf": "C:\\Users\\Administrator\\arena\\submission\\tests\\fixtures\\two_column.pdf",
+  "sha256": "b3829bf8e9289bc18c5d75ad8fce5f0eea02ad4731b9e26d54eed5c771838a9f",
+  "pages": 2,
+  "backend": "pymupdf",
+  "layout": {
+   "columns": 2,
+   "gutters": [
+    [
+     290,
+     296
+    ]
+   ],
+   "body_font_size": 9.5,
+   "page_size": [
+    595.0,
+    842.0
+   ]
+  }
+ },
+ "parsed": {
+  "markdown": "# two_column.pdf\n- pages: 2 (read 2), sha256 `b3829bf8e9289bc1…`\n- backend: pymupdf; status: **ok**\n- layout: 2 column(s), body ≈ 9.5 pt\n\n## Content in reading order\n\n### Page 1\n\n# Reading Order Recovery in Two-Column Scientific PDFs\n<!-- block p.1 p.1 col=full bbox=[56.0,60.4,457.8,75.4] -->\n*A. Author, B. Author (Institute of Document Engineering)*\n<!-- block p.1 p.1 col=L bbox=[56.0,84.6,292.6,94.1] -->\n> Abstract. We study how a layout-aware reader restores column order in two-column papers and keeps every sentence anchored to the page and block it came from.\n<!-- block p.1 p.1 col=full bbox=[56.0,105.4,370.1,113.9] -->\n\n## 1  Introduction\n<!-- block p.1 p.1 col=L bbox=[56.0,141.5,132.4,152.5] -->\n\nTwo-column papers set text in narrow columns, so one paragraph is split across two frames. A stream-order reader glues right onto left, and turns two sentences into one line.\n<!-- block p.1 p.1 col=L bbox=[56.0,158.6,255.0,168.1] -->\n\nThe damage is silent: every word is there.\n<!-- block p.1 p.1 col=L bbox=[56.0,204.6,231.8,214.1] -->\n\n## 2  Method\n<!-- block p.1 p.1 col=L bbox=[56.0,281.5,107.3,292.5] -->\n\nWe group characters into lines by baseline, then find vertical gutters from line spans. Lines that cross a gutter become separators. The rest are sorted column by column.\n<!-- block p.1 p.1 col=L bbox=[56.0,298.6,237.6,308.1] -->\n\n**Table 1: Spliced lines and order accuracy.**\n<!-- block p.1 p.1 col=L bbox=[56.0,353.8,205.0,361.8] -->\n\n| Layout | Spliced | Order acc. |\n|---|---|---|\n| Two-column (stream order) | 5 | 0.61 |\n| Two-column + skill | 0 | 0.98 |\n| Single column (control) | 1 | 0.55 |\n<sub>table pages [1, 2], table-1</sub>\n<!-- block p.1 p.1 col=L bbox=[56.0,368.0,290.0,396.0] -->\n\nGutter detection alone is not enough: a title, a caption or a wide table breaks the page into bands that must be ordered separately. We segment first, then order inside each band. Every block keeps its page and bounding box.\n<!-- block p.1 p.1 col=R bbox=[305.0,158.6,488.8,168.1] -->\n\n**Figure 1: Bands split by a spanning title.**\n<!-- block p.1 p.1 col=R bbox=[305.0,261.8,446.8,269.8] -->\n\nJournal of Layout Studies 3 (2026) 1-8\n<!-- block p.1 p.1 col=L bbox=[56.0,26.2,183.6,33.7] -->\n\n<small>1 Funded by the Layout Foundation. Correspondence: a.author@example.org</small>\n<!-- block p.1 p.1 col=L bbox=[56.0,740.2,314.6,747.7] -->\n\n1\n<!-- block p.1 p.1 col=R bbox=[295.5,795.0,300.5,804.0] -->\n\n### Page 2\n\n## 3  Results and Discussion\n<!-- block p.2 p.2 col=full bbox=[223.1,62.7,371.9,74.7] -->\n\n**Table 1 (continued)**\n<!-- block p.2 p.2 col=L bbox=[56.0,90.2,120.6,97.7] -->\n\nThe stream reader splices five lines here, which is the common word-processor failure. Band segmentation removes every splice. The remaining cost is one pass over the spans.\n<!-- block p.2 p.2 col=L bbox=[56.0,142.6,229.7,152.1] -->\n\nEvidence is a page number plus a bounding box, so a reviewer can check the sentence in place. Table rows keep the header of their first page. Formulas keep number and script structure.\n<!-- block p.2 p.2 col=R bbox=[305.0,142.6,510.4,152.1] -->\n\n```\nS = αx^{2} + βy_{−1}  (2)\n```\n<!-- block p.2 p.2 col=R bbox=[305.0,205.8,363.9,217.4] -->\n\nJournal of Layout Studies 3 (2026) 1-8\n<!-- block p.2 p.2 col=L bbox=[56.0,26.2,183.6,33.7] -->\n\n2\n<!-- block p.2 p.2 col=R bbox=[295.5,795.0,300.5,804.0] -->\n\n## Figures (located, not interpreted)\n- p.1 1 bbox=[305.0, 261.8, 446.8, 269.8] (confidence 0.6) Figure 1: Bands split by a spanning title.\n",
+  "blocks": [
+   {
+    "type": "title",
+    "page": 1,
+    "bbox": [
+     56.0,
+     60.4,
+     457.8,
+     75.4
+    ],
+    "column": "full",
+    "text": "Reading Order Recovery in Two-Column Scientific PDFs",
+    "rich_text": "Reading Order Recovery in Two-Column Scientific PDFs",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 60.4,
+      "y1": 75.4
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 15.0,
+    "locator": "p.1 col=full bbox=[56.0,60.4,457.8,75.4]",
+    "id": "p1-b1",
+    "order": 1
+   },
+   {
+    "type": "authors",
+    "page": 1,
+    "bbox": [
+     56.0,
+     84.6,
+     292.6,
+     94.1
+    ],
+    "column": "L",
+    "text": "A. Author, B. Author (Institute of Document Engineering)",
+    "rich_text": "A. Author, B. Author (Institute of Document Engineering)",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 84.6,
+      "y1": 94.1
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.1 col=L bbox=[56.0,84.6,292.6,94.1]",
+    "id": "p1-b2",
+    "order": 2
+   },
+   {
+    "type": "abstract",
+    "page": 1,
+    "bbox": [
+     56.0,
+     105.4,
+     370.1,
+     124.90608978271484
+    ],
+    "column": "full",
+    "text": "Abstract. We study how a layout-aware reader restores column order in two-column papers and keeps every sentence anchored to the page and block it came from.",
+    "rich_text": "Abstract. We study how a layout-aware reader restores column order in two-column papers and keeps every sentence anchored to the page and block it came from.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 105.4,
+      "y1": 113.9
+     },
+     {
+      "y0": 116.4,
+      "y1": 124.9
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 8.5,
+    "locator": "p.1 col=full bbox=[56.0,105.4,370.1,113.9]",
+    "id": "p1-b3",
+    "order": 3
+   },
+   {
+    "type": "heading",
+    "page": 1,
+    "bbox": [
+     56.0,
+     141.5,
+     132.4,
+     152.5
+    ],
+    "column": "L",
+    "text": "1  Introduction",
+    "rich_text": "1  Introduction",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 141.5,
+      "y1": 152.5
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 11.0,
+    "heading_level": 1,
+    "number": "1",
+    "locator": "p.1 col=L bbox=[56.0,141.5,132.4,152.5]",
+    "id": "p1-b4",
+    "order": 4
+   },
+   {
+    "type": "body",
+    "page": 1,
+    "bbox": [
+     56.0,
+     158.6,
+     255.0,
+     202.63034057617188
+    ],
+    "column": "L",
+    "text": "Two-column papers set text in narrow columns, so one paragraph is split across two frames. A stream-order reader glues right onto left, and turns two sentences into one line.",
+    "rich_text": "Two-column papers set text in narrow columns, so one paragraph is split across two frames. A stream-order reader glues right onto left, and turns two sentences into one line.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 158.6,
+      "y1": 168.1
+     },
+     {
+      "y0": 170.1,
+      "y1": 179.6
+     },
+     {
+      "y0": 181.6,
+      "y1": 191.1
+     },
+     {
+      "y0": 193.1,
+      "y1": 202.6
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.1 col=L bbox=[56.0,158.6,255.0,168.1]",
+    "id": "p1-b5",
+    "order": 5
+   },
+   {
+    "type": "body",
+    "page": 1,
+    "bbox": [
+     56.0,
+     204.6,
+     231.8,
+     214.1
+    ],
+    "column": "L",
+    "text": "The damage is silent: every word is there.",
+    "rich_text": "The damage is silent: every word is there.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 204.6,
+      "y1": 214.1
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.1 col=L bbox=[56.0,204.6,231.8,214.1]",
+    "id": "p1-b6",
+    "order": 6
+   },
+   {
+    "type": "heading",
+    "page": 1,
+    "bbox": [
+     56.0,
+     281.5,
+     107.3,
+     292.5
+    ],
+    "column": "L",
+    "text": "2  Method",
+    "rich_text": "2  Method",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 281.5,
+      "y1": 292.5
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 11.0,
+    "heading_level": 1,
+    "number": "2",
+    "locator": "p.1 col=L bbox=[56.0,281.5,107.3,292.5]",
+    "id": "p1-b7",
+    "order": 7
+   },
+   {
+    "type": "body",
+    "page": 1,
+    "bbox": [
+     56.0,
+     298.6,
+     243.97650146484375,
+     342.6303405761719
+    ],
+    "column": "L",
+    "text": "We group characters into lines by baseline, then find vertical gutters from line spans. Lines that cross a gutter become separators. The rest are sorted column by column.",
+    "rich_text": "We group characters into lines by baseline, then find vertical gutters from line spans. Lines that cross a gutter become separators. The rest are sorted column by column.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 298.6,
+      "y1": 308.1
+     },
+     {
+      "y0": 310.1,
+      "y1": 319.6
+     },
+     {
+      "y0": 321.6,
+      "y1": 331.1
+     },
+     {
+      "y0": 333.1,
+      "y1": 342.6
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.1 col=L bbox=[56.0,298.6,237.6,308.1]",
+    "id": "p1-b8",
+    "order": 8
+   },
+   {
+    "type": "caption",
+    "page": 1,
+    "bbox": [
+     56.0,
+     353.8,
+     205.0,
+     361.8
+    ],
+    "column": "L",
+    "text": "Table 1: Spliced lines and order accuracy.",
+    "rich_text": "Table 1: Spliced lines and order accuracy.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 353.8,
+      "y1": 361.8
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 8.0,
+    "caption_label": "table",
+    "caption_number": "1",
+    "continuation": false,
+    "locator": "p.1 col=L bbox=[56.0,353.8,205.0,361.8]",
+    "id": "p1-b9",
+    "order": 9
+   },
+   {
+    "kind": "table",
+    "type": "table",
+    "page": 1,
+    "x0": 56.0,
+    "x1": 290.0,
+    "y0": 368.0,
+    "y1": 396.0,
+    "bbox": [
+     56.0,
+     104.0,
+     290.0,
+     396.0
+    ],
+    "n_cols": 3,
+    "n_rows": 2,
+    "confidence": 1.0,
+    "backend": "pdfplumber",
+    "regions": [
+     0
+    ],
+    "region": 0,
+    "spanning": false,
+    "label": "L",
+    "full": true,
+    "id": "p1-b10",
+    "row_pages": [
+     1,
+     2,
+     2
+    ],
+    "caption_id": "p1-b9",
+    "number": "table-1",
+    "continuation": false,
+    "locator": "p.1 col=L bbox=[56.0,368.0,290.0,396.0]",
+    "order": 10,
+    "continuation_pages": [
+     2
+    ],
+    "merge_records": [
+     {
+      "merged_block": "p2-b3",
+      "from_page": 2,
+      "reason": "table number repeats on the next page without a new caption",
+      "rows_added": 2
+     }
+    ],
+    "spans_pages": [
+     1,
+     2
+    ],
+    "header": [
+     "Layout",
+     "Spliced",
+     "Order acc."
+    ],
+    "header_page": 1,
+    "header_bbox": [
+     [
+      56.0,
+      368.0,
+      156.0,
+      382.0
+     ],
+     [
+      156.0,
+      368.0,
+      216.0,
+      382.0
+     ],
+     [
+      216.0,
+      368.0,
+      290.0,
+      382.0
+     ]
+    ],
+    "rows": [
+     [
+      "Two-column (stream order)",
+      "5",
+      "0.61"
+     ],
+     [
+      "Two-column + skill",
+      "0",
+      "0.98"
+     ],
+     [
+      "Single column (control)",
+      "1",
+      "0.55"
+     ]
+    ],
+    "row_cells": [
+     [
+      {
+       "text": "Two-column (stream order)",
+       "bbox_page": [
+        56.0,
+        382.0,
+        156.0,
+        396.0
+       ]
+      },
+      {
+       "text": "5",
+       "bbox_page": [
+        156.0,
+        382.0,
+        216.0,
+        396.0
+       ]
+      },
+      {
+       "text": "0.61",
+       "bbox_page": [
+        216.0,
+        382.0,
+        290.0,
+        396.0
+       ]
+      }
+     ],
+     [
+      {
+       "text": "Two-column + skill",
+       "bbox_page": [
+        56.0,
+        104.0,
+        156.0,
+        118.0
+       ]
+      },
+      {
+       "text": "0",
+       "bbox_page": [
+        156.0,
+        104.0,
+        216.0,
+        118.0
+       ]
+      },
+      {
+       "text": "0.98",
+       "bbox_page": [
+        216.0,
+        104.0,
+        290.0,
+        118.0
+       ]
+      }
+     ],
+     [
+      {
+       "text": "Single column (control)",
+       "bbox_page": [
+        56.0,
+        118.0,
+        156.0,
+        132.0
+       ]
+      },
+      {
+       "text": "1",
+       "bbox_page": [
+        156.0,
+        118.0,
+        216.0,
+        132.0
+       ]
+      },
+      {
+       "text": "0.55",
+       "bbox_page": [
+        216.0,
+        118.0,
+        290.0,
+        132.0
+       ]
+      }
+     ]
+    ]
+   },
+   {
+    "type": "body",
+    "page": 1,
+    "bbox": [
+     305.0,
+     158.6,
+     501.9542236328125,
+     214.13034057617188
+    ],
+    "column": "R",
+    "text": "Gutter detection alone is not enough: a title, a caption or a wide table breaks the page into bands that must be ordered separately. We segment first, then order inside each band. Every block keeps its page and bounding box.",
+    "rich_text": "Gutter detection alone is not enough: a title, a caption or a wide table breaks the page into bands that must be ordered separately. We segment first, then order inside each band. Every block keeps its page and bounding box.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 158.6,
+      "y1": 168.1
+     },
+     {
+      "y0": 170.1,
+      "y1": 179.6
+     },
+     {
+      "y0": 181.6,
+      "y1": 191.1
+     },
+     {
+      "y0": 193.1,
+      "y1": 202.6
+     },
+     {
+      "y0": 204.6,
+      "y1": 214.1
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.5,
+    "locator": "p.1 col=R bbox=[305.0,158.6,488.8,168.1]",
+    "id": "p1-b11",
+    "order": 11
+   },
+   {
+    "type": "figure_label",
+    "page": 1,
+    "bbox": [
+     339.0,
+     233.0,
+     353.5,
+     239.5
+    ],
+    "column": "R",
+    "text": "band",
+    "rich_text": "band",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 233.0,
+      "y1": 239.5
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 6.5,
+    "locator": "p.1 col=R bbox=[339.0,233.0,353.5,239.5]",
+    "id": "p1-b12",
+    "order": 12
+   },
+   {
+    "type": "figure_label",
+    "page": 1,
+    "bbox": [
+     455.0,
+     233.0,
+     472.7,
+     239.5
+    ],
+    "column": "R",
+    "text": "bands",
+    "rich_text": "bands",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 233.0,
+      "y1": 239.5
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 6.5,
+    "locator": "p.1 col=R bbox=[455.0,233.0,472.7,239.5]",
+    "id": "p1-b13",
+    "order": 13
+   },
+   {
+    "type": "caption",
+    "page": 1,
+    "bbox": [
+     305.0,
+     261.8,
+     446.8,
+     269.8
+    ],
+    "column": "R",
+    "text": "Figure 1: Bands split by a spanning title.",
+    "rich_text": "Figure 1: Bands split by a spanning title.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 261.8,
+      "y1": 269.8
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 8.0,
+    "caption_label": "figure",
+    "caption_number": "1",
+    "continuation": false,
+    "locator": "p.1 col=R bbox=[305.0,261.8,446.8,269.8]",
+    "id": "p1-b14",
+    "order": 14
+   },
+   {
+    "type": "header",
+    "page": 1,
+    "bbox": [
+     56.0,
+     26.2,
+     183.6,
+     33.7
+    ],
+    "column": "L",
+    "text": "Journal of Layout Studies 3 (2026) 1-8",
+    "rich_text": "Journal of Layout Studies 3 (2026) 1-8",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 26.2,
+      "y1": 33.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 7.5,
+    "locator": "p.1 col=L bbox=[56.0,26.2,183.6,33.7]",
+    "role": "periphery",
+    "id": "p1-b15",
+    "order": 15
+   },
+   {
+    "type": "footnote",
+    "page": 1,
+    "bbox": [
+     56.0,
+     740.2,
+     314.6,
+     747.7
+    ],
+    "column": "L",
+    "text": "1 Funded by the Layout Foundation. Correspondence: a.author@example.org",
+    "rich_text": "1 Funded by the Layout Foundation. Correspondence: a.author@example.org",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 740.2,
+      "y1": 747.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 7.5,
+    "locator": "p.1 col=L bbox=[56.0,740.2,314.6,747.7]",
+    "role": "periphery",
+    "id": "p1-b16",
+    "order": 16
+   },
+   {
+    "type": "footer",
+    "page": 1,
+    "bbox": [
+     295.5,
+     795.0,
+     300.5,
+     804.0
+    ],
+    "column": "R",
+    "text": "1",
+    "rich_text": "1",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 795.0,
+      "y1": 804.0
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.0,
+    "locator": "p.1 col=R bbox=[295.5,795.0,300.5,804.0]",
+    "role": "periphery",
+    "id": "p1-b17",
+    "order": 17
+   },
+   {
+    "type": "heading",
+    "page": 2,
+    "bbox": [
+     223.1,
+     62.7,
+     371.9,
+     74.7
+    ],
+    "column": "full",
+    "text": "3  Results and Discussion",
+    "rich_text": "3  Results and Discussion",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 62.7,
+      "y1": 74.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 12.0,
+    "heading_level": 1,
+    "number": "3",
+    "locator": "p.2 col=full bbox=[223.1,62.7,371.9,74.7]",
+    "id": "p2-b1",
+    "order": 18
+   },
+   {
+    "type": "caption",
+    "page": 2,
+    "bbox": [
+     56.0,
+     90.2,
+     120.6,
+     97.7
+    ],
+    "column": "L",
+    "text": "Table 1 (continued)",
+    "rich_text": "Table 1 (continued)",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 90.2,
+      "y1": 97.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 7.5,
+    "caption_label": "table",
+    "caption_number": "1",
+    "continuation": true,
+    "locator": "p.2 col=L bbox=[56.0,90.2,120.6,97.7]",
+    "id": "p2-b2",
+    "order": 19
+   },
+   {
+    "type": "body",
+    "page": 2,
+    "bbox": [
+     56.0,
+     142.6,
+     255.06300354003906,
+     186.63034057617188
+    ],
+    "column": "L",
+    "text": "The stream reader splices five lines here, which is the common word-processor failure. Band segmentation removes every splice. The remaining cost is one pass over the spans.",
+    "rich_text": "The stream reader splices five lines here, which is the common word-processor failure. Band segmentation removes every splice. The remaining cost is one pass over the spans.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 142.6,
+      "y1": 152.1
+     },
+     {
+      "y0": 154.1,
+      "y1": 163.6
+     },
+     {
+      "y0": 165.6,
+      "y1": 175.1
+     },
+     {
+      "y0": 177.1,
+      "y1": 186.6
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.2 col=L bbox=[56.0,142.6,229.7,152.1]",
+    "id": "p2-b4",
+    "order": 21
+   },
+   {
+    "type": "body",
+    "page": 2,
+    "bbox": [
+     305.0,
+     142.6,
+     510.4,
+     186.63034057617188
+    ],
+    "column": "R",
+    "text": "Evidence is a page number plus a bounding box, so a reviewer can check the sentence in place. Table rows keep the header of their first page. Formulas keep number and script structure.",
+    "rich_text": "Evidence is a page number plus a bounding box, so a reviewer can check the sentence in place. Table rows keep the header of their first page. Formulas keep number and script structure.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 142.6,
+      "y1": 152.1
+     },
+     {
+      "y0": 154.1,
+      "y1": 163.6
+     },
+     {
+      "y0": 165.6,
+      "y1": 175.1
+     },
+     {
+      "y0": 177.1,
+      "y1": 186.6
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.5,
+    "locator": "p.2 col=R bbox=[305.0,142.6,510.4,152.1]",
+    "id": "p2-b5",
+    "order": 22
+   },
+   {
+    "type": "formula",
+    "page": 2,
+    "bbox": [
+     305.0,
+     205.8,
+     363.9,
+     217.4
+    ],
+    "column": "R",
+    "text": "S = αx2 + βy−1",
+    "rich_text": "S = αx^{2} + βy_{−1}",
+    "scripts": [
+     {
+      "type": "sup",
+      "start": 6,
+      "end": 7,
+      "text": "2"
+     },
+     {
+      "type": "sub",
+      "start": 12,
+      "end": 14,
+      "text": "−1"
+     }
+    ],
+    "formula_number": "2",
+    "greek": [
+     "α",
+     "β"
+    ],
+    "symbols": [
+     "+",
+     "=",
+     "α",
+     "β",
+     "−"
+    ],
+    "lines": [
+     {
+      "y0": 205.8,
+      "y1": 217.4
+     }
+    ],
+    "confidence": 0.65,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.5,
+    "locator": "p.2 col=R bbox=[305.0,205.8,363.9,217.4]",
+    "id": "p2-b6",
+    "order": 23
+   },
+   {
+    "type": "header",
+    "page": 2,
+    "bbox": [
+     56.0,
+     26.2,
+     183.6,
+     33.7
+    ],
+    "column": "L",
+    "text": "Journal of Layout Studies 3 (2026) 1-8",
+    "rich_text": "Journal of Layout Studies 3 (2026) 1-8",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 26.2,
+      "y1": 33.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 7.5,
+    "locator": "p.2 col=L bbox=[56.0,26.2,183.6,33.7]",
+    "role": "periphery",
+    "id": "p2-b7",
+    "order": 24
+   },
+   {
+    "type": "footer",
+    "page": 2,
+    "bbox": [
+     295.5,
+     795.0,
+     300.5,
+     804.0
+    ],
+    "column": "R",
+    "text": "2",
+    "rich_text": "2",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 795.0,
+      "y1": 804.0
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.0,
+    "locator": "p.2 col=R bbox=[295.5,795.0,300.5,804.0]",
+    "role": "periphery",
+    "id": "p2-b8",
+    "order": 25
+   }
+  ],
+  "tables": [
+   {
+    "kind": "table",
+    "type": "table",
+    "page": 1,
+    "x0": 56.0,
+    "x1": 290.0,
+    "y0": 368.0,
+    "y1": 396.0,
+    "bbox": [
+     56.0,
+     104.0,
+     290.0,
+     396.0
+    ],
+    "n_cols": 3,
+    "n_rows": 2,
+    "confidence": 1.0,
+    "backend": "pdfplumber",
+    "regions": [
+     0
+    ],
+    "region": 0,
+    "spanning": false,
+    "label": "L",
+    "full": true,
+    "id": "p1-b10",
+    "row_pages": [
+     1,
+     2,
+     2
+    ],
+    "caption_id": "p1-b9",
+    "number": "table-1",
+    "continuation": false,
+    "locator": "p.1 col=L bbox=[56.0,368.0,290.0,396.0]",
+    "order": 10,
+    "continuation_pages": [
+     2
+    ],
+    "merge_records": [
+     {
+      "merged_block": "p2-b3",
+      "from_page": 2,
+      "reason": "table number repeats on the next page without a new caption",
+      "rows_added": 2
+     }
+    ],
+    "spans_pages": [
+     1,
+     2
+    ],
+    "header": [
+     "Layout",
+     "Spliced",
+     "Order acc."
+    ],
+    "header_page": 1,
+    "header_bbox": [
+     [
+      56.0,
+      368.0,
+      156.0,
+      382.0
+     ],
+     [
+      156.0,
+      368.0,
+      216.0,
+      382.0
+     ],
+     [
+      216.0,
+      368.0,
+      290.0,
+      382.0
+     ]
+    ],
+    "rows": [
+     [
+      "Two-column (stream order)",
+      "5",
+      "0.61"
+     ],
+     [
+      "Two-column + skill",
+      "0",
+      "0.98"
+     ],
+     [
+      "Single column (control)",
+      "1",
+      "0.55"
+     ]
+    ],
+    "row_cells": [
+     [
+      {
+       "text": "Two-column (stream order)",
+       "bbox_page": [
+        56.0,
+        382.0,
+        156.0,
+        396.0
+       ]
+      },
+      {
+       "text": "5",
+       "bbox_page": [
+        156.0,
+        382.0,
+        216.0,
+        396.0
+       ]
+      },
+      {
+       "text": "0.61",
+       "bbox_page": [
+        216.0,
+        382.0,
+        290.0,
+        396.0
+       ]
+      }
+     ],
+     [
+      {
+       "text": "Two-column + skill",
+       "bbox_page": [
+        56.0,
+        104.0,
+        156.0,
+        118.0
+       ]
+      },
+      {
+       "text": "0",
+       "bbox_page": [
+        156.0,
+        104.0,
+        216.0,
+        118.0
+       ]
+      },
+      {
+       "text": "0.98",
+       "bbox_page": [
+        216.0,
+        104.0,
+        290.0,
+        118.0
+       ]
+      }
+     ],
+     [
+      {
+       "text": "Single column (control)",
+       "bbox_page": [
+        56.0,
+        118.0,
+        156.0,
+        132.0
+       ]
+      },
+      {
+       "text": "1",
+       "bbox_page": [
+        156.0,
+        118.0,
+        216.0,
+        132.0
+       ]
+      },
+      {
+       "text": "0.55",
+       "bbox_page": [
+        216.0,
+        118.0,
+        290.0,
+        132.0
+       ]
+      }
+     ]
+    ]
+   }
+  ],
+  "formulas": [
+   {
+    "type": "formula",
+    "page": 2,
+    "bbox": [
+     305.0,
+     205.8,
+     363.9,
+     217.4
+    ],
+    "column": "R",
+    "text": "S = αx2 + βy−1",
+    "rich_text": "S = αx^{2} + βy_{−1}",
+    "scripts": [
+     {
+      "type": "sup",
+      "start": 6,
+      "end": 7,
+      "text": "2"
+     },
+     {
+      "type": "sub",
+      "start": 12,
+      "end": 14,
+      "text": "−1"
+     }
+    ],
+    "formula_number": "2",
+    "greek": [
+     "α",
+     "β"
+    ],
+    "symbols": [
+     "+",
+     "=",
+     "α",
+     "β",
+     "−"
+    ],
+    "lines": [
+     {
+      "y0": 205.8,
+      "y1": 217.4
+     }
+    ],
+    "confidence": 0.65,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.5,
+    "locator": "p.2 col=R bbox=[305.0,205.8,363.9,217.4]",
+    "id": "p2-b6",
+    "order": 23
+   }
+  ],
+  "figures": [
+   {
+    "caption_id": "p1-b14",
+    "page": 1,
+    "caption_bbox": [
+     305.0,
+     261.8,
+     446.8,
+     269.8
+    ],
+    "estimated_bbox": [
+     305.0,
+     261.8,
+     446.8,
+     269.8
+    ],
+    "caption_number": "1",
+    "label": "Figure 1: Bands split by a spanning title.",
+    "confidence": 0.6,
+    "note": "figure area estimated from the caption; the artwork itself is not interpreted"
+   }
+  ]
+ },
+ "evidence": [
+  {
+   "block_id": "p1-b1",
+   "page": 1,
+   "type": "title",
+   "locator": "p.1 col=full bbox=[56.0,60.4,457.8,75.4]"
+  },
+  {
+   "block_id": "p1-b2",
+   "page": 1,
+   "type": "authors",
+   "locator": "p.1 col=L bbox=[56.0,84.6,292.6,94.1]"
+  },
+  {
+   "block_id": "p1-b3",
+   "page": 1,
+   "type": "abstract",
+   "locator": "p.1 col=full bbox=[56.0,105.4,370.1,113.9]"
+  },
+  {
+   "block_id": "p1-b4",
+   "page": 1,
+   "type": "heading",
+   "locator": "p.1 col=L bbox=[56.0,141.5,132.4,152.5]"
+  },
+  {
+   "block_id": "p1-b5",
+   "page": 1,
+   "type": "body",
+   "locator": "p.1 col=L bbox=[56.0,158.6,255.0,168.1]"
+  },
+  {
+   "block_id": "p1-b6",
+   "page": 1,
+   "type": "body",
+   "locator": "p.1 col=L bbox=[56.0,204.6,231.8,214.1]"
+  },
+  {
+   "block_id": "p1-b7",
+   "page": 1,
+   "type": "heading",
+   "locator": "p.1 col=L bbox=[56.0,281.5,107.3,292.5]"
+  },
+  {
+   "block_id": "p1-b8",
+   "page": 1,
+   "type": "body",
+   "locator": "p.1 col=L bbox=[56.0,298.6,237.6,308.1]"
+  },
+  {
+   "block_id": "p1-b9",
+   "page": 1,
+   "type": "caption",
+   "locator": "p.1 col=L bbox=[56.0,353.8,205.0,361.8]"
+  },
+  {
+   "block_id": "p1-b10",
+   "page": 1,
+   "type": "table",
+   "locator": "p.1 col=L bbox=[56.0,368.0,290.0,396.0]"
+  },
+  {
+   "block_id": "p1-b11",
+   "page": 1,
+   "type": "body",
+   "locator": "p.1 col=R bbox=[305.0,158.6,488.8,168.1]"
+  },
+  {
+   "block_id": "p1-b12",
+   "page": 1,
+   "type": "figure_label",
+   "locator": "p.1 col=R bbox=[339.0,233.0,353.5,239.5]"
+  },
+  {
+   "block_id": "p1-b13",
+   "page": 1,
+   "type": "figure_label",
+   "locator": "p.1 col=R bbox=[455.0,233.0,472.7,239.5]"
+  },
+  {
+   "block_id": "p1-b14",
+   "page": 1,
+   "type": "caption",
+   "locator": "p.1 col=R bbox=[305.0,261.8,446.8,269.8]"
+  },
+  {
+   "block_id": "p1-b15",
+   "page": 1,
+   "type": "header",
+   "locator": "p.1 col=L bbox=[56.0,26.2,183.6,33.7]"
+  },
+  {
+   "block_id": "p1-b16",
+   "page": 1,
+   "type": "footnote",
+   "locator": "p.1 col=L bbox=[56.0,740.2,314.6,747.7]"
+  },
+  {
+   "block_id": "p1-b17",
+   "page": 1,
+   "type": "footer",
+   "locator": "p.1 col=R bbox=[295.5,795.0,300.5,804.0]"
+  },
+  {
+   "block_id": "p2-b1",
+   "page": 2,
+   "type": "heading",
+   "locator": "p.2 col=full bbox=[223.1,62.7,371.9,74.7]"
+  },
+  {
+   "block_id": "p2-b2",
+   "page": 2,
+   "type": "caption",
+   "locator": "p.2 col=L bbox=[56.0,90.2,120.6,97.7]"
+  },
+  {
+   "block_id": "p2-b4",
+   "page": 2,
+   "type": "body",
+   "locator": "p.2 col=L bbox=[56.0,142.6,229.7,152.1]"
+  },
+  {
+   "block_id": "p2-b5",
+   "page": 2,
+   "type": "body",
+   "locator": "p.2 col=R bbox=[305.0,142.6,510.4,152.1]"
+  },
+  {
+   "block_id": "p2-b6",
+   "page": 2,
+   "type": "formula",
+   "locator": "p.2 col=R bbox=[305.0,205.8,363.9,217.4]"
+  },
+  {
+   "block_id": "p2-b7",
+   "page": 2,
+   "type": "header",
+   "locator": "p.2 col=L bbox=[56.0,26.2,183.6,33.7]"
+  },
+  {
+   "block_id": "p2-b8",
+   "page": 2,
+   "type": "footer",
+   "locator": "p.2 col=R bbox=[295.5,795.0,300.5,804.0]"
+  }
+ ],
+ "uncertainties": [],
+ "output_contract": {
+  "declared": {
+   "fields": [
+    "text",
+    "blocks",
+    "tables",
+    "formulas",
+    "figure_captions",
+    "answer"
+   ]
+  },
+  "fields": [
+   {
+    "field": "text",
+    "auto_filled": true,
+    "source": "markdown",
+    "note": null
+   },
+   {
+    "field": "blocks",
+    "auto_filled": true,
+    "source": "blocks",
+    "note": null
+   },
+   {
+    "field": "tables",
+    "auto_filled": true,
+    "source": "tables",
+    "note": null
+   },
+   {
+    "field": "formulas",
+    "auto_filled": true,
+    "source": "formulas",
+    "note": null
+   },
+   {
+    "field": "figure_captions",
+    "auto_filled": true,
+    "source": "figures",
+    "note": null
+   },
+   {
+    "field": "answer",
+    "auto_filled": false,
+    "source": null,
+    "note": "needs the agent: this field is a judgement call derived from the parsed content, not a parsing artefact"
+   }
+  ],
+  "unfilled": [
+   "answer"
+  ]
+ },
+ "answers": {
+  "text": "# two_column.pdf\n- pages: 2 (read 2), sha256 `b3829bf8e9289bc1…`\n- backend: pymupdf; status: **ok**\n- layout: 2 column(s), body ≈ 9.5 pt\n\n## Content in reading order\n\n### Page 1\n\n# Reading Order Recovery in Two-Column Scientific PDFs\n<!-- block p.1 p.1 col=full bbox=[56.0,60.4,457.8,75.4] -->\n*A. Author, B. Author (Institute of Document Engineering)*\n<!-- block p.1 p.1 col=L bbox=[56.0,84.6,292.6,94.1] -->\n> Abstract. We study how a layout-aware reader restores column order in two-column papers and keeps every sentence anchored to the page and block it came from.\n<!-- block p.1 p.1 col=full bbox=[56.0,105.4,370.1,113.9] -->\n\n## 1  Introduction\n<!-- block p.1 p.1 col=L bbox=[56.0,141.5,132.4,152.5] -->\n\nTwo-column papers set text in narrow columns, so one paragraph is split across two frames. A stream-order reader glues right onto left, and turns two sentences into one line.\n<!-- block p.1 p.1 col=L bbox=[56.0,158.6,255.0,168.1] -->\n\nThe damage is silent: every word is there.\n<!-- block p.1 p.1 col=L bbox=[56.0,204.6,231.8,214.1] -->\n\n## 2  Method\n<!-- block p.1 p.1 col=L bbox=[56.0,281.5,107.3,292.5] -->\n\nWe group characters into lines by baseline, then find vertical gutters from line spans. Lines that cross a gutter become separators. The rest are sorted column by column.\n<!-- block p.1 p.1 col=L bbox=[56.0,298.6,237.6,308.1] -->\n\n**Table 1: Spliced lines and order accuracy.**\n<!-- block p.1 p.1 col=L bbox=[56.0,353.8,205.0,361.8] -->\n\n| Layout | Spliced | Order acc. |\n|---|---|---|\n| Two-column (stream order) | 5 | 0.61 |\n| Two-column + skill | 0 | 0.98 |\n| Single column (control) | 1 | 0.55 |\n<sub>table pages [1, 2], table-1</sub>\n<!-- block p.1 p.1 col=L bbox=[56.0,368.0,290.0,396.0] -->\n\nGutter detection alone is not enough: a title, a caption or a wide table breaks the page into bands that must be ordered separately. We segment first, then order inside each band. Every block keeps its page and bounding box.\n<!-- block p.1 p.1 col=R bbox=[305.0,158.6,488.8,168.1] -->\n\n**Figure 1: Bands split by a spanning title.**\n<!-- block p.1 p.1 col=R bbox=[305.0,261.8,446.8,269.8] -->\n\nJournal of Layout Studies 3 (2026) 1-8\n<!-- block p.1 p.1 col=L bbox=[56.0,26.2,183.6,33.7] -->\n\n<small>1 Funded by the Layout Foundation. Correspondence: a.author@example.org</small>\n<!-- block p.1 p.1 col=L bbox=[56.0,740.2,314.6,747.7] -->\n\n1\n<!-- block p.1 p.1 col=R bbox=[295.5,795.0,300.5,804.0] -->\n\n### Page 2\n\n## 3  Results and Discussion\n<!-- block p.2 p.2 col=full bbox=[223.1,62.7,371.9,74.7] -->\n\n**Table 1 (continued)**\n<!-- block p.2 p.2 col=L bbox=[56.0,90.2,120.6,97.7] -->\n\nThe stream reader splices five lines here, which is the common word-processor failure. Band segmentation removes every splice. The remaining cost is one pass over the spans.\n<!-- block p.2 p.2 col=L bbox=[56.0,142.6,229.7,152.1] -->\n\nEvidence is a page number plus a bounding box, so a reviewer can check the sentence in place. Table rows keep the header of their first page. Formulas keep number and script structure.\n<!-- block p.2 p.2 col=R bbox=[305.0,142.6,510.4,152.1] -->\n\n```\nS = αx^{2} + βy_{−1}  (2)\n```\n<!-- block p.2 p.2 col=R bbox=[305.0,205.8,363.9,217.4] -->\n\nJournal of Layout Studies 3 (2026) 1-8\n<!-- block p.2 p.2 col=L bbox=[56.0,26.2,183.6,33.7] -->\n\n2\n<!-- block p.2 p.2 col=R bbox=[295.5,795.0,300.5,804.0] -->\n\n## Figures (located, not interpreted)\n- p.1 1 bbox=[305.0, 261.8, 446.8, 269.8] (confidence 0.6) Figure 1: Bands split by a spanning title.\n",
+  "blocks": [
+   {
+    "type": "title",
+    "page": 1,
+    "bbox": [
+     56.0,
+     60.4,
+     457.8,
+     75.4
+    ],
+    "column": "full",
+    "text": "Reading Order Recovery in Two-Column Scientific PDFs",
+    "rich_text": "Reading Order Recovery in Two-Column Scientific PDFs",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 60.4,
+      "y1": 75.4
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 15.0,
+    "locator": "p.1 col=full bbox=[56.0,60.4,457.8,75.4]",
+    "id": "p1-b1",
+    "order": 1
+   },
+   {
+    "type": "authors",
+    "page": 1,
+    "bbox": [
+     56.0,
+     84.6,
+     292.6,
+     94.1
+    ],
+    "column": "L",
+    "text": "A. Author, B. Author (Institute of Document Engineering)",
+    "rich_text": "A. Author, B. Author (Institute of Document Engineering)",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 84.6,
+      "y1": 94.1
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.1 col=L bbox=[56.0,84.6,292.6,94.1]",
+    "id": "p1-b2",
+    "order": 2
+   },
+   {
+    "type": "abstract",
+    "page": 1,
+    "bbox": [
+     56.0,
+     105.4,
+     370.1,
+     124.90608978271484
+    ],
+    "column": "full",
+    "text": "Abstract. We study how a layout-aware reader restores column order in two-column papers and keeps every sentence anchored to the page and block it came from.",
+    "rich_text": "Abstract. We study how a layout-aware reader restores column order in two-column papers and keeps every sentence anchored to the page and block it came from.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 105.4,
+      "y1": 113.9
+     },
+     {
+      "y0": 116.4,
+      "y1": 124.9
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 8.5,
+    "locator": "p.1 col=full bbox=[56.0,105.4,370.1,113.9]",
+    "id": "p1-b3",
+    "order": 3
+   },
+   {
+    "type": "heading",
+    "page": 1,
+    "bbox": [
+     56.0,
+     141.5,
+     132.4,
+     152.5
+    ],
+    "column": "L",
+    "text": "1  Introduction",
+    "rich_text": "1  Introduction",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 141.5,
+      "y1": 152.5
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 11.0,
+    "heading_level": 1,
+    "number": "1",
+    "locator": "p.1 col=L bbox=[56.0,141.5,132.4,152.5]",
+    "id": "p1-b4",
+    "order": 4
+   },
+   {
+    "type": "body",
+    "page": 1,
+    "bbox": [
+     56.0,
+     158.6,
+     255.0,
+     202.63034057617188
+    ],
+    "column": "L",
+    "text": "Two-column papers set text in narrow columns, so one paragraph is split across two frames. A stream-order reader glues right onto left, and turns two sentences into one line.",
+    "rich_text": "Two-column papers set text in narrow columns, so one paragraph is split across two frames. A stream-order reader glues right onto left, and turns two sentences into one line.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 158.6,
+      "y1": 168.1
+     },
+     {
+      "y0": 170.1,
+      "y1": 179.6
+     },
+     {
+      "y0": 181.6,
+      "y1": 191.1
+     },
+     {
+      "y0": 193.1,
+      "y1": 202.6
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.1 col=L bbox=[56.0,158.6,255.0,168.1]",
+    "id": "p1-b5",
+    "order": 5
+   },
+   {
+    "type": "body",
+    "page": 1,
+    "bbox": [
+     56.0,
+     204.6,
+     231.8,
+     214.1
+    ],
+    "column": "L",
+    "text": "The damage is silent: every word is there.",
+    "rich_text": "The damage is silent: every word is there.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 204.6,
+      "y1": 214.1
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.1 col=L bbox=[56.0,204.6,231.8,214.1]",
+    "id": "p1-b6",
+    "order": 6
+   },
+   {
+    "type": "heading",
+    "page": 1,
+    "bbox": [
+     56.0,
+     281.5,
+     107.3,
+     292.5
+    ],
+    "column": "L",
+    "text": "2  Method",
+    "rich_text": "2  Method",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 281.5,
+      "y1": 292.5
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 11.0,
+    "heading_level": 1,
+    "number": "2",
+    "locator": "p.1 col=L bbox=[56.0,281.5,107.3,292.5]",
+    "id": "p1-b7",
+    "order": 7
+   },
+   {
+    "type": "body",
+    "page": 1,
+    "bbox": [
+     56.0,
+     298.6,
+     243.97650146484375,
+     342.6303405761719
+    ],
+    "column": "L",
+    "text": "We group characters into lines by baseline, then find vertical gutters from line spans. Lines that cross a gutter become separators. The rest are sorted column by column.",
+    "rich_text": "We group characters into lines by baseline, then find vertical gutters from line spans. Lines that cross a gutter become separators. The rest are sorted column by column.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 298.6,
+      "y1": 308.1
+     },
+     {
+      "y0": 310.1,
+      "y1": 319.6
+     },
+     {
+      "y0": 321.6,
+      "y1": 331.1
+     },
+     {
+      "y0": 333.1,
+      "y1": 342.6
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.1 col=L bbox=[56.0,298.6,237.6,308.1]",
+    "id": "p1-b8",
+    "order": 8
+   },
+   {
+    "type": "caption",
+    "page": 1,
+    "bbox": [
+     56.0,
+     353.8,
+     205.0,
+     361.8
+    ],
+    "column": "L",
+    "text": "Table 1: Spliced lines and order accuracy.",
+    "rich_text": "Table 1: Spliced lines and order accuracy.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 353.8,
+      "y1": 361.8
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 8.0,
+    "caption_label": "table",
+    "caption_number": "1",
+    "continuation": false,
+    "locator": "p.1 col=L bbox=[56.0,353.8,205.0,361.8]",
+    "id": "p1-b9",
+    "order": 9
+   },
+   {
+    "kind": "table",
+    "type": "table",
+    "page": 1,
+    "x0": 56.0,
+    "x1": 290.0,
+    "y0": 368.0,
+    "y1": 396.0,
+    "bbox": [
+     56.0,
+     104.0,
+     290.0,
+     396.0
+    ],
+    "n_cols": 3,
+    "n_rows": 2,
+    "confidence": 1.0,
+    "backend": "pdfplumber",
+    "regions": [
+     0
+    ],
+    "region": 0,
+    "spanning": false,
+    "label": "L",
+    "full": true,
+    "id": "p1-b10",
+    "row_pages": [
+     1,
+     2,
+     2
+    ],
+    "caption_id": "p1-b9",
+    "number": "table-1",
+    "continuation": false,
+    "locator": "p.1 col=L bbox=[56.0,368.0,290.0,396.0]",
+    "order": 10,
+    "continuation_pages": [
+     2
+    ],
+    "merge_records": [
+     {
+      "merged_block": "p2-b3",
+      "from_page": 2,
+      "reason": "table number repeats on the next page without a new caption",
+      "rows_added": 2
+     }
+    ],
+    "spans_pages": [
+     1,
+     2
+    ],
+    "header": [
+     "Layout",
+     "Spliced",
+     "Order acc."
+    ],
+    "header_page": 1,
+    "header_bbox": [
+     [
+      56.0,
+      368.0,
+      156.0,
+      382.0
+     ],
+     [
+      156.0,
+      368.0,
+      216.0,
+      382.0
+     ],
+     [
+      216.0,
+      368.0,
+      290.0,
+      382.0
+     ]
+    ],
+    "rows": [
+     [
+      "Two-column (stream order)",
+      "5",
+      "0.61"
+     ],
+     [
+      "Two-column + skill",
+      "0",
+      "0.98"
+     ],
+     [
+      "Single column (control)",
+      "1",
+      "0.55"
+     ]
+    ],
+    "row_cells": [
+     [
+      {
+       "text": "Two-column (stream order)",
+       "bbox_page": [
+        56.0,
+        382.0,
+        156.0,
+        396.0
+       ]
+      },
+      {
+       "text": "5",
+       "bbox_page": [
+        156.0,
+        382.0,
+        216.0,
+        396.0
+       ]
+      },
+      {
+       "text": "0.61",
+       "bbox_page": [
+        216.0,
+        382.0,
+        290.0,
+        396.0
+       ]
+      }
+     ],
+     [
+      {
+       "text": "Two-column + skill",
+       "bbox_page": [
+        56.0,
+        104.0,
+        156.0,
+        118.0
+       ]
+      },
+      {
+       "text": "0",
+       "bbox_page": [
+        156.0,
+        104.0,
+        216.0,
+        118.0
+       ]
+      },
+      {
+       "text": "0.98",
+       "bbox_page": [
+        216.0,
+        104.0,
+        290.0,
+        118.0
+       ]
+      }
+     ],
+     [
+      {
+       "text": "Single column (control)",
+       "bbox_page": [
+        56.0,
+        118.0,
+        156.0,
+        132.0
+       ]
+      },
+      {
+       "text": "1",
+       "bbox_page": [
+        156.0,
+        118.0,
+        216.0,
+        132.0
+       ]
+      },
+      {
+       "text": "0.55",
+       "bbox_page": [
+        216.0,
+        118.0,
+        290.0,
+        132.0
+       ]
+      }
+     ]
+    ]
+   },
+   {
+    "type": "body",
+    "page": 1,
+    "bbox": [
+     305.0,
+     158.6,
+     501.9542236328125,
+     214.13034057617188
+    ],
+    "column": "R",
+    "text": "Gutter detection alone is not enough: a title, a caption or a wide table breaks the page into bands that must be ordered separately. We segment first, then order inside each band. Every block keeps its page and bounding box.",
+    "rich_text": "Gutter detection alone is not enough: a title, a caption or a wide table breaks the page into bands that must be ordered separately. We segment first, then order inside each band. Every block keeps its page and bounding box.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 158.6,
+      "y1": 168.1
+     },
+     {
+      "y0": 170.1,
+      "y1": 179.6
+     },
+     {
+      "y0": 181.6,
+      "y1": 191.1
+     },
+     {
+      "y0": 193.1,
+      "y1": 202.6
+     },
+     {
+      "y0": 204.6,
+      "y1": 214.1
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.5,
+    "locator": "p.1 col=R bbox=[305.0,158.6,488.8,168.1]",
+    "id": "p1-b11",
+    "order": 11
+   },
+   {
+    "type": "figure_label",
+    "page": 1,
+    "bbox": [
+     339.0,
+     233.0,
+     353.5,
+     239.5
+    ],
+    "column": "R",
+    "text": "band",
+    "rich_text": "band",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 233.0,
+      "y1": 239.5
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 6.5,
+    "locator": "p.1 col=R bbox=[339.0,233.0,353.5,239.5]",
+    "id": "p1-b12",
+    "order": 12
+   },
+   {
+    "type": "figure_label",
+    "page": 1,
+    "bbox": [
+     455.0,
+     233.0,
+     472.7,
+     239.5
+    ],
+    "column": "R",
+    "text": "bands",
+    "rich_text": "bands",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 233.0,
+      "y1": 239.5
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 6.5,
+    "locator": "p.1 col=R bbox=[455.0,233.0,472.7,239.5]",
+    "id": "p1-b13",
+    "order": 13
+   },
+   {
+    "type": "caption",
+    "page": 1,
+    "bbox": [
+     305.0,
+     261.8,
+     446.8,
+     269.8
+    ],
+    "column": "R",
+    "text": "Figure 1: Bands split by a spanning title.",
+    "rich_text": "Figure 1: Bands split by a spanning title.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 261.8,
+      "y1": 269.8
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 8.0,
+    "caption_label": "figure",
+    "caption_number": "1",
+    "continuation": false,
+    "locator": "p.1 col=R bbox=[305.0,261.8,446.8,269.8]",
+    "id": "p1-b14",
+    "order": 14
+   },
+   {
+    "type": "header",
+    "page": 1,
+    "bbox": [
+     56.0,
+     26.2,
+     183.6,
+     33.7
+    ],
+    "column": "L",
+    "text": "Journal of Layout Studies 3 (2026) 1-8",
+    "rich_text": "Journal of Layout Studies 3 (2026) 1-8",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 26.2,
+      "y1": 33.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 7.5,
+    "locator": "p.1 col=L bbox=[56.0,26.2,183.6,33.7]",
+    "role": "periphery",
+    "id": "p1-b15",
+    "order": 15
+   },
+   {
+    "type": "footnote",
+    "page": 1,
+    "bbox": [
+     56.0,
+     740.2,
+     314.6,
+     747.7
+    ],
+    "column": "L",
+    "text": "1 Funded by the Layout Foundation. Correspondence: a.author@example.org",
+    "rich_text": "1 Funded by the Layout Foundation. Correspondence: a.author@example.org",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 740.2,
+      "y1": 747.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 7.5,
+    "locator": "p.1 col=L bbox=[56.0,740.2,314.6,747.7]",
+    "role": "periphery",
+    "id": "p1-b16",
+    "order": 16
+   },
+   {
+    "type": "footer",
+    "page": 1,
+    "bbox": [
+     295.5,
+     795.0,
+     300.5,
+     804.0
+    ],
+    "column": "R",
+    "text": "1",
+    "rich_text": "1",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 795.0,
+      "y1": 804.0
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.0,
+    "locator": "p.1 col=R bbox=[295.5,795.0,300.5,804.0]",
+    "role": "periphery",
+    "id": "p1-b17",
+    "order": 17
+   },
+   {
+    "type": "heading",
+    "page": 2,
+    "bbox": [
+     223.1,
+     62.7,
+     371.9,
+     74.7
+    ],
+    "column": "full",
+    "text": "3  Results and Discussion",
+    "rich_text": "3  Results and Discussion",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 62.7,
+      "y1": 74.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 12.0,
+    "heading_level": 1,
+    "number": "3",
+    "locator": "p.2 col=full bbox=[223.1,62.7,371.9,74.7]",
+    "id": "p2-b1",
+    "order": 18
+   },
+   {
+    "type": "caption",
+    "page": 2,
+    "bbox": [
+     56.0,
+     90.2,
+     120.6,
+     97.7
+    ],
+    "column": "L",
+    "text": "Table 1 (continued)",
+    "rich_text": "Table 1 (continued)",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 90.2,
+      "y1": 97.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 7.5,
+    "caption_label": "table",
+    "caption_number": "1",
+    "continuation": true,
+    "locator": "p.2 col=L bbox=[56.0,90.2,120.6,97.7]",
+    "id": "p2-b2",
+    "order": 19
+   },
+   {
+    "type": "body",
+    "page": 2,
+    "bbox": [
+     56.0,
+     142.6,
+     255.06300354003906,
+     186.63034057617188
+    ],
+    "column": "L",
+    "text": "The stream reader splices five lines here, which is the common word-processor failure. Band segmentation removes every splice. The remaining cost is one pass over the spans.",
+    "rich_text": "The stream reader splices five lines here, which is the common word-processor failure. Band segmentation removes every splice. The remaining cost is one pass over the spans.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 142.6,
+      "y1": 152.1
+     },
+     {
+      "y0": 154.1,
+      "y1": 163.6
+     },
+     {
+      "y0": 165.6,
+      "y1": 175.1
+     },
+     {
+      "y0": 177.1,
+      "y1": 186.6
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 9.5,
+    "locator": "p.2 col=L bbox=[56.0,142.6,229.7,152.1]",
+    "id": "p2-b4",
+    "order": 21
+   },
+   {
+    "type": "body",
+    "page": 2,
+    "bbox": [
+     305.0,
+     142.6,
+     510.4,
+     186.63034057617188
+    ],
+    "column": "R",
+    "text": "Evidence is a page number plus a bounding box, so a reviewer can check the sentence in place. Table rows keep the header of their first page. Formulas keep number and script structure.",
+    "rich_text": "Evidence is a page number plus a bounding box, so a reviewer can check the sentence in place. Table rows keep the header of their first page. Formulas keep number and script structure.",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 142.6,
+      "y1": 152.1
+     },
+     {
+      "y0": 154.1,
+      "y1": 163.6
+     },
+     {
+      "y0": 165.6,
+      "y1": 175.1
+     },
+     {
+      "y0": 177.1,
+      "y1": 186.6
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.5,
+    "locator": "p.2 col=R bbox=[305.0,142.6,510.4,152.1]",
+    "id": "p2-b5",
+    "order": 22
+   },
+   {
+    "type": "formula",
+    "page": 2,
+    "bbox": [
+     305.0,
+     205.8,
+     363.9,
+     217.4
+    ],
+    "column": "R",
+    "text": "S = αx2 + βy−1",
+    "rich_text": "S = αx^{2} + βy_{−1}",
+    "scripts": [
+     {
+      "type": "sup",
+      "start": 6,
+      "end": 7,
+      "text": "2"
+     },
+     {
+      "type": "sub",
+      "start": 12,
+      "end": 14,
+      "text": "−1"
+     }
+    ],
+    "formula_number": "2",
+    "greek": [
+     "α",
+     "β"
+    ],
+    "symbols": [
+     "+",
+     "=",
+     "α",
+     "β",
+     "−"
+    ],
+    "lines": [
+     {
+      "y0": 205.8,
+      "y1": 217.4
+     }
+    ],
+    "confidence": 0.65,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.5,
+    "locator": "p.2 col=R bbox=[305.0,205.8,363.9,217.4]",
+    "id": "p2-b6",
+    "order": 23
+   },
+   {
+    "type": "header",
+    "page": 2,
+    "bbox": [
+     56.0,
+     26.2,
+     183.6,
+     33.7
+    ],
+    "column": "L",
+    "text": "Journal of Layout Studies 3 (2026) 1-8",
+    "rich_text": "Journal of Layout Studies 3 (2026) 1-8",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 26.2,
+      "y1": 33.7
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 0,
+    "size": 7.5,
+    "locator": "p.2 col=L bbox=[56.0,26.2,183.6,33.7]",
+    "role": "periphery",
+    "id": "p2-b7",
+    "order": 24
+   },
+   {
+    "type": "footer",
+    "page": 2,
+    "bbox": [
+     295.5,
+     795.0,
+     300.5,
+     804.0
+    ],
+    "column": "R",
+    "text": "2",
+    "rich_text": "2",
+    "scripts": [],
+    "lines": [
+     {
+      "y0": 795.0,
+      "y1": 804.0
+     }
+    ],
+    "confidence": 1.0,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.0,
+    "locator": "p.2 col=R bbox=[295.5,795.0,300.5,804.0]",
+    "role": "periphery",
+    "id": "p2-b8",
+    "order": 25
+   }
+  ],
+  "tables": [
+   {
+    "kind": "table",
+    "type": "table",
+    "page": 1,
+    "x0": 56.0,
+    "x1": 290.0,
+    "y0": 368.0,
+    "y1": 396.0,
+    "bbox": [
+     56.0,
+     104.0,
+     290.0,
+     396.0
+    ],
+    "n_cols": 3,
+    "n_rows": 2,
+    "confidence": 1.0,
+    "backend": "pdfplumber",
+    "regions": [
+     0
+    ],
+    "region": 0,
+    "spanning": false,
+    "label": "L",
+    "full": true,
+    "id": "p1-b10",
+    "row_pages": [
+     1,
+     2,
+     2
+    ],
+    "caption_id": "p1-b9",
+    "number": "table-1",
+    "continuation": false,
+    "locator": "p.1 col=L bbox=[56.0,368.0,290.0,396.0]",
+    "order": 10,
+    "continuation_pages": [
+     2
+    ],
+    "merge_records": [
+     {
+      "merged_block": "p2-b3",
+      "from_page": 2,
+      "reason": "table number repeats on the next page without a new caption",
+      "rows_added": 2
+     }
+    ],
+    "spans_pages": [
+     1,
+     2
+    ],
+    "header": [
+     "Layout",
+     "Spliced",
+     "Order acc."
+    ],
+    "header_page": 1,
+    "header_bbox": [
+     [
+      56.0,
+      368.0,
+      156.0,
+      382.0
+     ],
+     [
+      156.0,
+      368.0,
+      216.0,
+      382.0
+     ],
+     [
+      216.0,
+      368.0,
+      290.0,
+      382.0
+     ]
+    ],
+    "rows": [
+     [
+      "Two-column (stream order)",
+      "5",
+      "0.61"
+     ],
+     [
+      "Two-column + skill",
+      "0",
+      "0.98"
+     ],
+     [
+      "Single column (control)",
+      "1",
+      "0.55"
+     ]
+    ],
+    "row_cells": [
+     [
+      {
+       "text": "Two-column (stream order)",
+       "bbox_page": [
+        56.0,
+        382.0,
+        156.0,
+        396.0
+       ]
+      },
+      {
+       "text": "5",
+       "bbox_page": [
+        156.0,
+        382.0,
+        216.0,
+        396.0
+       ]
+      },
+      {
+       "text": "0.61",
+       "bbox_page": [
+        216.0,
+        382.0,
+        290.0,
+        396.0
+       ]
+      }
+     ],
+     [
+      {
+       "text": "Two-column + skill",
+       "bbox_page": [
+        56.0,
+        104.0,
+        156.0,
+        118.0
+       ]
+      },
+      {
+       "text": "0",
+       "bbox_page": [
+        156.0,
+        104.0,
+        216.0,
+        118.0
+       ]
+      },
+      {
+       "text": "0.98",
+       "bbox_page": [
+        216.0,
+        104.0,
+        290.0,
+        118.0
+       ]
+      }
+     ],
+     [
+      {
+       "text": "Single column (control)",
+       "bbox_page": [
+        56.0,
+        118.0,
+        156.0,
+        132.0
+       ]
+      },
+      {
+       "text": "1",
+       "bbox_page": [
+        156.0,
+        118.0,
+        216.0,
+        132.0
+       ]
+      },
+      {
+       "text": "0.55",
+       "bbox_page": [
+        216.0,
+        118.0,
+        290.0,
+        132.0
+       ]
+      }
+     ]
+    ]
+   }
+  ],
+  "formulas": [
+   {
+    "type": "formula",
+    "page": 2,
+    "bbox": [
+     305.0,
+     205.8,
+     363.9,
+     217.4
+    ],
+    "column": "R",
+    "text": "S = αx2 + βy−1",
+    "rich_text": "S = αx^{2} + βy_{−1}",
+    "scripts": [
+     {
+      "type": "sup",
+      "start": 6,
+      "end": 7,
+      "text": "2"
+     },
+     {
+      "type": "sub",
+      "start": 12,
+      "end": 14,
+      "text": "−1"
+     }
+    ],
+    "formula_number": "2",
+    "greek": [
+     "α",
+     "β"
+    ],
+    "symbols": [
+     "+",
+     "=",
+     "α",
+     "β",
+     "−"
+    ],
+    "lines": [
+     {
+      "y0": 205.8,
+      "y1": 217.4
+     }
+    ],
+    "confidence": 0.65,
+    "source": "text-layer",
+    "region": 1,
+    "size": 9.5,
+    "locator": "p.2 col=R bbox=[305.0,205.8,363.9,217.4]",
+    "id": "p2-b6",
+    "order": 23
+   }
+  ],
+  "figure_captions": [
+   {
+    "caption_id": "p1-b14",
+    "page": 1,
+    "caption_bbox": [
+     305.0,
+     261.8,
+     446.8,
+     269.8
+    ],
+    "estimated_bbox": [
+     305.0,
+     261.8,
+     446.8,
+     269.8
+    ],
+    "caption_number": "1",
+    "label": "Figure 1: Bands split by a spanning title.",
+    "confidence": 0.6,
+    "note": "figure area estimated from the caption; the artwork itself is not interpreted"
+   }
+  ],
+  "answer": null
+ },
+ "change_log": [
+  {
+   "step": "parse",
+   "action": "layout-aware text extraction + reading order",
+   "detail": "24 blocks, 2 column(s)"
+  },
+  {
+   "step": "structure",
+   "action": "tables / formulas / figures / captions",
+   "detail": "1 table(s), 1 formula(s), 1 figure(s)"
+  },
+  {
+   "step": "evidence",
+   "action": "page + bbox recorded for every block",
+   "detail": "24 locators"
+  },
+  {
+   "step": "contract",
+   "action": "map parsed content onto case output_contract",
+   "detail": "5/6 fields auto-filled"
+  }
+ ]
+}

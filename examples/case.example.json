@@ -1,0 +1,8 @@
+{
+ "case_id": "example-001",
+ "language": "en",
+ "task": "Parse this two-column paper: give the reading order, every table with its header, and every formula with its number.",
+ "output_contract": {
+  "fields": ["text", "blocks", "tables", "formulas", "figure_captions", "answer"]
+ }
+}
