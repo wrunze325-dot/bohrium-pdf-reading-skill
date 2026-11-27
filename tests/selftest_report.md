@@ -4,7 +4,7 @@ Fixture: `two_column.pdf`. Same PDF, same questions, same machine.
 
 | metric | baseline:pypdf.extract_text | baseline:pymupdf.get_text(text) | skill:pdf_outline |
 |---|---|---|---|
-| wall seconds | 0.016 | 0.006 | 0.372 |
+| wall seconds | 0.017 | 0.006 | 0.392 |
 | tokens found | 37/42 | 38/42 | 38/42 |
 | order inversions | 52 (rate 0.1048) | 52 (rate 0.0985) | 0 (rate 0.0) |
 | cross-column alternations | 17 | 17 | 1 |
@@ -20,10 +20,10 @@ Fixture: `two_column.pdf`. Same PDF, same questions, same machine.
 
 ## Single-column control page
 
-- columns detected `1` (expected 1), body blocks 4, all fixture lines present in order: True, 0.353 s
+- columns detected `1` (expected 1), body blocks 4, all fixture lines present in order: True, 0.376 s
 
 ## Scanned page (no text layer)
 
-- skill status `failed`, uncertainties ['no_text_layer', 'ocr_unavailable', 'unreadable_page'], blocks 0, 0.406 s
+- skill status `failed`, uncertainties ['no_text_layer', 'ocr_unavailable', 'unreadable_page'], blocks 0, 0.422 s
 - baseline pypdf text: 0 chars, silently empty: True
 - skill reports the gap instead of inventing text: True

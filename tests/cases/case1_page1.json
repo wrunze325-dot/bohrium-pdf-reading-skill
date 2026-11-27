@@ -1,0 +1,22 @@
+{
+ "case_id": "local-01-page1-answer",
+ "language": "en",
+ "task": "How many spliced lines does the 'Two-column (stream order)' layout produce? Answer with the number and the table row it comes from.",
+ "pdf": "tests/fixtures/two_column.pdf",
+ "output_contract": {
+  "fields": [
+   {"name": "answer", "type": "text", "required": true,
+    "description": "the number asked for, plus the table row it comes from"},
+   {"name": "evidence", "type": "evidence", "required": true,
+    "description": "page + block + verbatim quote for the answer"}
+  ]
+ },
+ "expected": {
+  "answer_contains": "5",
+  "page": 1,
+  "quote": "Two-column (stream order)",
+  "table_row": "Two-column (stream order)",
+  "table_column": "Spliced",
+  "note": "the answer lives only on page 1 although the document has 2 pages; a citation of page 2 is wrong"
+ }
+}

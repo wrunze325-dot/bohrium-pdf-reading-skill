@@ -1,0 +1,14 @@
+{
+ "case_id": "local-04-tables-required-empty",
+ "task": "List the tables in this document. If it has none, report that it has none.",
+ "pdf": "tests/fixtures/single_column.pdf",
+ "output_contract": {
+  "fields": [
+   {"name": "tables", "type": "structured", "required": true,
+    "description": "every table in the document; an empty list means the document has no table"},
+   {"name": "text", "type": "text", "required": false,
+    "description": "document text"}
+  ]
+ },
+ "expected": {"tables_empty_accepted": true, "note": "single_column.pdf genuinely has no table"}
+}

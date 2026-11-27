@@ -1,0 +1,45 @@
+{
+ "case_id": "local-05-properties-required",
+ "task": "State the accuracy reported for 'Two-column + skill' in Table 1.",
+ "pdf": "tests/fixtures/two_column.pdf",
+ "output_contract": {
+  "type": "object",
+  "properties": {
+   "answer": {
+    "type": "text",
+    "description": "the accuracy value with its row/column"
+   },
+   "confidence": {
+    "type": "number",
+    "description": "0..1 self-reported confidence"
+   },
+   "text": {
+    "type": "text",
+    "description": "document text"
+   }
+  },
+  "required": [
+   "answer"
+  ]
+ },
+ "expected": {
+  "fields": {
+   "answer": {
+    "required": true,
+    "type": "text"
+   },
+   "confidence": {
+    "required": false,
+    "type": "number"
+   },
+   "text": {
+    "required": false,
+    "type": "text"
+   }
+  },
+  "note": "properties carries type and description, required carries requiredness; both must survive",
+  "answer_contains": "0.98",
+  "page": 2,
+  "quote": "0.98"
+ }
+}

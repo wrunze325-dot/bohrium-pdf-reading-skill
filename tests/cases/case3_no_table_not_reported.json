@@ -1,0 +1,19 @@
+{
+ "case_id": "local-03-no-table-not-reported",
+ "language": "en",
+ "task": "What accuracy does method B report in Table 2?",
+ "pdf": "tests/fixtures/single_column.pdf",
+ "output_contract": {
+  "fields": [
+   {"name": "answer", "type": "text", "required": true,
+    "description": "the requested accuracy"},
+   {"name": "missing", "type": "missing_information", "required": true,
+    "description": "when the document cannot answer: state what is missing and why"}
+  ]
+ },
+ "expected": {
+  "must_not_invent_number": true,
+  "kinds": ["no_such_object", "not_reported"],
+  "note": "the document has no tables at all, and 'method B' / an accuracy figure is not reported"
+ }
+}

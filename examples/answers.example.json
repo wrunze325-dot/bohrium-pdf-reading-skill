@@ -1,0 +1,28 @@
+{
+ "answers": {
+  "answer": {
+   "value": "0.98",
+   "type": "table_cell",
+   "unit": "fraction",
+   "evidence": [
+    {
+     "page": 2,
+     "quote": "Two-column + skill"
+    }
+   ],
+   "locator": {
+    "table": "table-1",
+    "row": "Two-column + skill",
+    "column": "Order acc."
+   },
+   "filled_by": "agent"
+  },
+  "evidence": [
+   {
+    "page": 2,
+    "quote": "Two-column + skill"
+   }
+  ]
+ },
+ "missing_information": []
+}

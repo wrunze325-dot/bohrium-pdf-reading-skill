@@ -1,0 +1,16 @@
+{
+ "case_id": "local-06-unrecognized-field",
+ "task": "Give the accuracy for 'Two-column + skill'.",
+ "pdf": "tests/fixtures/two_column.pdf",
+ "output_contract": {
+  "fields": [
+   "answer",
+   {"description": "the judge wants this, but it declares no name"},
+   {"name": 42}
+  ]
+ },
+ "expected": {
+  "warn": true,
+  "note": "a declaration without a usable name must be reported and must block 'complete'"
+ }
+}

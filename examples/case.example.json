@@ -1,8 +1,27 @@
 {
  "case_id": "example-001",
  "language": "en",
- "task": "Parse this two-column paper: give the reading order, every table with its header, and every formula with its number.",
+ "task": "In Table 1, what order accuracy is reported for the 'Two-column + skill' layout? Give the value with its row and column.",
+ "pdf": "tests/fixtures/two_column.pdf",
  "output_contract": {
-  "fields": ["text", "blocks", "tables", "formulas", "figure_captions", "answer"]
+  "fields": [
+   {"name": "text", "type": "text", "required": false,
+    "description": "full document text in reading order"},
+   {"name": "tables", "type": "structured", "required": false,
+    "description": "tables with header, rows and per-row page"},
+   {"name": "answer", "type": "table_cell", "required": true,
+    "description": "value, unit and the table row/column it belongs to"},
+   {"name": "evidence", "type": "evidence", "required": true,
+    "description": "page + block + verbatim quote for the value"}
+  ]
+ },
+ "expected": {
+  "answer_contains": "0.98",
+  "page": 2,
+  "quote": "Two-column + skill",
+  "table_row": "Two-column + skill",
+  "table_column": "Order acc.",
+  "unit": "fraction",
+  "note": "the row continues Table 1 on page 2; the header comes from page 1"
  }
 }

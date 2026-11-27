@@ -13,9 +13,15 @@ scripts/pdf_outline.py    解析入口：字符 -> 行 -> 栏 -> 分带 -> 阅�
 scripts/po_tables.py      表格：pdfplumber 结构化，几何切分兜底，跨页续表合并
 scripts/po_formulas.py    公式：编号、上下标、希腊字母与符号保真
 scripts/po_ocr.py         扫描页 OCR 后端探测与调用（多后端，失败即报告）
-scripts/build_result.py   按 case 的 output_contract 生成 result.json
+scripts/build_result.py   骨架 / 合并答案 / 校验：把"解析完成"和"案例完成"分开
+scripts/po_contract.py    读取 output_contract，区分解析字段与判断字段（不按字段名猜语义）
+scripts/po_evidence.py    证据解析与校验：逐字引用、页码范围、数字溯源、表格行列
 tests/make_fixtures.py    生成合成样本（双栏 / 单栏对照 / 扫描页）与真值 truth.json
-tests/selftest.py         基线 vs Skill 的公平对照，输出 tests/selftest_report.md
+tests/selftest.py         解析层对照：基线 vs Skill，输出 tests/selftest_report.md
+tests/test_cases.py       交付层三例对照 + 反例，输出 tests/runs/cases/report.json
+tests/reproduce_bug.py    复现 v4 的"status=ok 但答案为空"缺陷
+tests/cases/              三个本地案例（第 1 页作答 / 表格单元格 / 无表格且未报告）
+tests/v4_vs_v5_report.md  三例的 v4/v5 对照表
 tests/fixtures/           真值与说明；PDF 由 make_fixtures.py 现场生成，不随包分发
 examples/                 最小输入、调用与示意输出（明确标注为示例）
 ```
@@ -24,13 +30,40 @@ examples/                 最小输入、调用与示意输出（明确标注为
 
 ```bash
 pip install pymupdf pdfplumber          # tesseract 可选，仅扫描页需要
+
+# 1. 解析（只负责"读文档"）
 python3 scripts/pdf_outline.py --pdf paper.pdf --out work/
+
+# 2. 骨架：解析产物自动填，判断字段留空，case_status=incomplete
 python3 scripts/build_result.py --case case.json --blocks work/blocks.json \
         --markdown work/document.md --out out/result.json
+
+# 3. 作答（agent 读原文，答案必须带 page + 原文引用），合并并校验
+python3 scripts/build_result.py --case case.json --result out/result.json \
+        --apply-answers answers.json
+
+# 4. 任何手改后重新校验（未通过时退出码 2）
+python3 scripts/build_result.py --case case.json --result out/result.json --validate
 ```
 
 产物：`blocks.json`（结构化、带页码与 bbox）、`document.md`（人读版，逐块带定位注释）、
-`summary.json`、`run.log`。
+`summary.json`、`run.log`，以及 `result.json`（`parse.status` 与 `case_status` 分开）。
+
+### 两层状态
+
+| 状态 | 回答的问题 | 取值 |
+|---|---|---|
+| `parse.status` | 文档解析成功了吗 | `ok` / `partial` / `failed` |
+| `case_status`（= `status`） | 案例的合同字段都答完了吗 | `complete` / `incomplete` / `blocked` / `failed` |
+
+`case_status=complete` 需要每个必需字段都通过证据校验；只把 blocks 或坐标填进 `evidence`
+不算答完。答不出来时写 `missing_information`（`no_such_object` / `not_reported` / `parse_failure`），
+状态为 `blocked`，不会伪造成 `ok`。
+
+三条合同规则（都有回归测试）：required 的 `tables` 在文档确认无表时接受 `[]`
+（仅当 `parse.status=ok`，否则 `structural_empty_unconfirmed` 待确认）；
+`properties` + `required` 同时出现时合并，保留类型与必填性；
+读不懂的字段声明记入 `contract.warnings` 并阻塞 `complete`，不会被悄悄丢掉。
 
 ## 方法（为什么顺序会变对）
 
@@ -45,6 +78,8 @@ python3 scripts/build_result.py --case case.json --blocks work/blocks.json \
    逐行分类后再按列合并成段（短行结尾断开、连字符断词还原）。
 6. **表格**：行列与单元格、表头行、每行来自哪一页；跨页续表按表号合并回首页表头。
 7. **证据**：每个块都有 `page`（1 起）与 `bbox`（PDF 点、原点左上），`locator` 形如 `p.1 col=L bbox=[56.0,158.6,255.0,168.1]`。
+   答案层再进一步：引用的原文必须在该页逐字出现（脚本回查 blocks/表格），答案里的数字必须能在引用里找到，
+   表格答案必须给出 table/row/column 并与表头、行、列、值四者一致。
 
 ## 自测（同一 PDF、同一问题、同一机器）
 
@@ -78,6 +113,29 @@ python3 scripts/build_result.py --case case.json --blocks work/blocks.json \
 python3 tests/make_fixtures.py && python3 tests/selftest.py
 ```
 
+## 交付层自测：三个案例，v4 与 v5 同一批输入
+
+`tests/test_cases.py` 用同一批输入分别跑 v4（旧版）和 v5，产出一张对照表
+（`tests/v4_vs_v5_report.md`）；26/26 项检查通过。三道题与结果：
+
+| # | 题目 | 预期 | v4 输出 | v5 输出 | v5 证据 |
+|---|---|---|---|---|---|
+| 1 | 表 1 中 `Two-column (stream order)` 行报告了多少条拼接行？ | `5`，且引自第 1 页（文档共 2 页） | `status=ok`，`answer=null`，`unfilled=[answer, evidence]` | `status=complete`，`answer=5` | p.1 · row=`Two-column (stream order)` · col=`Spliced` |
+| 2 | 表 1 中 `Two-column + skill` 行的准确率是多少？ | `0.98`，行/列/值一致，引自第 2 页（续表） | `status=ok`，`answer=null` | `status=complete`，`answer=0.98` | p.2 · row=`Two-column + skill` · col=`Order acc.` |
+| 3 | 表 2 中 method B 报告的准确率是多少？（该文档没有表格，也没报告该量） | 不给数字，说明原因 | `status=ok`，`answer=null`，`unfilled=[answer, missing]` | `status=blocked`，`answer=null` | `missing_information=[no_such_object, not_reported]` |
+
+反例（同一批输入，v5 必须拒绝）：把引用页码写成 2 而不是 1、答案写一个引用里没有的数字、
+表格答案不写行列 —— 三种都被判不通过（`page_out_of_range` / `quote_not_found` /
+`number_not_in_evidence` / `table_cell_row_column`），案例不会变成 `complete`；
+改回正确作答后重新校验，状态回到 `complete`。
+
+### 复现出来的缺陷（已修）
+
+`tests/reproduce_bug.py` 在 v4 上稳定复现：**必需字段 `answer` 为空、`unfilled=["answer"]`，
+`result.json` 却写着 `status="ok"`**。根因是旧版把"解析成功"直接当成"案例成功"，并且按字段名
+正则猜语义。v5 把两者拆开（`parse.status` / `case_status`），骨架阶段就写 `incomplete`，
+只有全部必需字段通过证据校验才 `complete`；答不出来则 `blocked` 并写 `missing_information`。
+
 ## 真实论文冒烟测试（本地，不随包分发）
 
 除合成样例外，另在两篇公开 arXiv 论文上跑过解析（仅本地验证，PDF 未打包分发，也不含任何论文摘录作为答案）：
@@ -85,6 +143,7 @@ python3 tests/make_fixtures.py && python3 tests/selftest.py
 | 论文版式 | 结果 |
 |---|---|
 | 单栏（arXiv 1706.03762，15 页） | `columns=1` 全部页面，1 个标题、13 个小节、19 个公式块；无异常，1.0 s（前 6 页） |
+| 单栏（arXiv 2010.11929 ViT，22 页）**开发后才选，未针对它调规则** | 走完 v5 全流程：问"best ViT 在 ImageNet 上的准确率"，答 `88.55%`，证据 p.2，逐字引用核对通过；渲染该页人工确认原文写作 "the best model reaches the accuracy of 88.55% on ImageNet"。同一篇的 Table 1 结构被切碎（表头旋转、单元格内换行），表格问题被校验拒绝，未编造数值 |
 | 双栏（arXiv 1512.03385，12 页） | 第 1–4、6 页检出双栏、第 5 页为通栏大表（`columns_by_page=[2,2,2,2,1,2]`）；第 2 页逐块核对为"左栏读完再右栏"；7 个表格、13 个题注、7 个公式块；2.1 s（前 6 页） |
 
 这次冒烟测试暴露并修掉了三个真实缺陷（记在此处以示可信）：标题页的递归栏切分把右栏再切成两栏、
@@ -96,7 +155,9 @@ arXiv 侧边竖排印章被当成 7 个"标题"、以 method 开头的正文行�
   公式保真与逐块定位的场景。
 - 退化的情形：正文绕图、三栏中插通栏图、竖排、极端不规则版式；此时看 `layout.columns` 与
   `document.md` 即可发现，需要人工兜底。
-- 表格依赖可检测线框或稳定列距；无线框表格只能给低置信度结构。
+- 表格依赖可检测线框或稳定列距；无线框表格只能给低置信度结构。表头旋转、单元格内换行、
+  跨页且无表号的表会被切碎（本地在 arXiv 2010.11929 的 Table 1 上实测到），此时答案校验会拒绝
+  `table_cell` 作答，案例保持 `incomplete`，不会编数。
 - 公式只做结构保真，不做数学语义或 LaTeX 转换。
 - 图表只定位（caption + 图框 bbox），不识别图形内容。
 - 无文字层且无 OCR 后端时，该页内容不会出现在结果里——这是有意的选择，不是遗漏。

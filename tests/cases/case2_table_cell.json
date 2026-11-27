@@ -1,0 +1,22 @@
+{
+ "case_id": "local-02-table-cell",
+ "language": "en",
+ "task": "In Table 1, what order accuracy is reported for the 'Two-column + skill' layout? Give the value with its row and column.",
+ "pdf": "tests/fixtures/two_column.pdf",
+ "output_contract": {
+  "fields": [
+   {"name": "answer", "type": "table_cell", "required": true,
+    "description": "value, unit and the table row/column it belongs to"},
+   {"name": "evidence", "type": "evidence", "required": true,
+    "description": "page + block + verbatim quote for the value"}
+  ]
+ },
+ "expected": {
+  "answer_contains": "0.98",
+  "page": 2,
+  "quote": "Two-column + skill",
+  "table_row": "Two-column + skill",
+  "table_column": "Order acc.",
+  "note": "row sits on the continuation page of Table 1; the header comes from page 1"
+ }
+}
